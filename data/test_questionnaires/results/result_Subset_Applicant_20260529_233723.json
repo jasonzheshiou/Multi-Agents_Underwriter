@@ -1,0 +1,12 @@
+{
+  "final_assessment": {
+    "decision": "Standard Offer"
+  },
+  "agent_assessments": {
+    "MedicalAgent": "<MagicMock id='2486511096160'>"
+  },
+  "debate_log": [],
+  "consensus_reached": true,
+  "final_decision": "Standard Offer",
+  "decision_reasoning": "Medical agent assessed standard."
+}

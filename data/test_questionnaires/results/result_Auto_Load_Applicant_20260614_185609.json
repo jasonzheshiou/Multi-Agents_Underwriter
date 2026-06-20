@@ -1,0 +1,18 @@
+{
+  "final_assessment": {
+    "decision": "Standard Offer",
+    "risk_tier": "standard",
+    "reasoning": "All agents agree on standard risk.",
+    "flags": [],
+    "additional_evidence_required": []
+  },
+  "agent_assessments": {
+    "MedicalAgent": "<MagicMock id='1873301592000'>",
+    "FinancialAgent": "<MagicMock id='1873301593344'>",
+    "ComplianceAgent": "<MagicMock id='1873301594496'>"
+  },
+  "debate_log": [],
+  "consensus_reached": true,
+  "final_decision": "Standard Offer",
+  "decision_reasoning": "All 3 agents assessed as standard. Standard Offer."
+}

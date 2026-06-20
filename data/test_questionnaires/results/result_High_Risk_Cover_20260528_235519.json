@@ -1,0 +1,262 @@
+{
+  "final_assessment": {
+    "decision": "Refer to Manual Underwriting",
+    "risk_tier": "decline",
+    "reasoning": "Final decision: Refer to Manual Underwriting. Based on assessments from 3 agents. Highest risk tier: decline.",
+    "flags": [
+      {
+        "rule_id": "MED-D-003",
+        "severity": "low",
+        "description": "BMI 25-30 - overweight. May attract loading if combined with other risk factors.",
+        "category": "bmi"
+      },
+      {
+        "rule_id": "MED-D-013",
+        "severity": "high",
+        "description": "Current smoker. Significant loading applied due to elevated mortality risk.",
+        "category": "smoker_status"
+      },
+      {
+        "rule_id": "MED-D-030",
+        "severity": "critical",
+        "description": "Cardiovascular disease in applicant over 50. Requires specialist assessment.",
+        "category": "pre_existing_condition"
+      },
+      {
+        "rule_id": "MED-D-032",
+        "severity": "moderate",
+        "description": "Type 2 diabetes. Loading depends on control (HbA1c), complications, and duration.",
+        "category": "pre_existing_condition"
+      },
+      {
+        "rule_id": "FIN-D-005",
+        "severity": "none",
+        "description": "Age 51-60: Sum insured within 15x income. Acceptable ratio for older applicants.",
+        "category": "income_multiple"
+      },
+      {
+        "rule_id": "MED-D-030",
+        "severity": "critical",
+        "description": "Cardiovascular disease in applicant over 50. Requires specialist assessment.",
+        "category": "pre_existing_condition"
+      }
+    ],
+    "additional_evidence_required": [
+      "gp_report",
+      "hba1c_history",
+      "cotinine_test",
+      "stress_ecg",
+      "echocardiogram",
+      "cardiologist_report"
+    ],
+    "all_assessments": {
+      "Medical Agent": {
+        "agent_name": "Medical Agent",
+        "risk_tier": "refer",
+        "flags": [
+          {
+            "rule_id": "MED-D-003",
+            "severity": "low",
+            "description": "BMI 25-30 - overweight. May attract loading if combined with other risk factors.",
+            "category": "bmi"
+          },
+          {
+            "rule_id": "MED-D-013",
+            "severity": "high",
+            "description": "Current smoker. Significant loading applied due to elevated mortality risk.",
+            "category": "smoker_status"
+          },
+          {
+            "rule_id": "MED-D-030",
+            "severity": "critical",
+            "description": "Cardiovascular disease in applicant over 50. Requires specialist assessment.",
+            "category": "pre_existing_condition"
+          },
+          {
+            "rule_id": "MED-D-032",
+            "severity": "moderate",
+            "description": "Type 2 diabetes. Loading depends on control (HbA1c), complications, and duration.",
+            "category": "pre_existing_condition"
+          }
+        ],
+        "recommendation": "manual_underwriting",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [
+          "gp_report",
+          "cotinine_test",
+          "cardiologist_report",
+          "stress_ecg",
+          "echocardiogram",
+          "hba1c_history"
+        ],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Rebuttal for Medical Agent: Re-evaluating 4 flag(s) against 2 conflicting assessment(s).\n  [STAND FIRM] MED-D-003: BMI 25-30 - overweight. May attract loading if combined with other risk factors. (severity: low) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-013: Current smoker. Significant loading applied due to elevated mortality risk. (severity: high) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-030: Cardiovascular disease in applicant over 50. Requires specialist assessment. (severity: critical) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-032: Type 2 diabetes. Loading depends on control (HbA1c), complications, and duration. (severity: moderate) \u2014 Objective clinical evidence supports this flag.\n\n  Standing firm on tier refer (confidence 1.00).",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": false,
+        "timestamp": "2026-05-28T13:55:19.136372"
+      },
+      "Financial Agent": {
+        "agent_name": "Financial Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "FIN-D-005",
+            "severity": "none",
+            "description": "Age 51-60: Sum insured within 15x income. Acceptable ratio for older applicants.",
+            "category": "income_multiple"
+          }
+        ],
+        "recommendation": "standard",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 0.95,
+        "reasoning_summary": "Matched 1 deterministic rule(s). Highest severity: none (FIN-D-005). [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed assessment from Compliance Agent (standard). Financial evidence supports our assessment (standard). Standing firm. [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed conflicting assessment from Compliance Agent (decline). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed conflicting assessment from Compliance Agent (decline). Financial data supports original tier (standard). Standing firm on financial risk assessment.",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": false,
+        "timestamp": "2026-05-28T13:55:19.135371"
+      },
+      "Compliance Agent": {
+        "agent_name": "Compliance Agent",
+        "risk_tier": "decline",
+        "flags": [
+          {
+            "rule_id": "MED-D-030",
+            "severity": "critical",
+            "description": "Cardiovascular disease in applicant over 50. Requires specialist assessment.",
+            "category": "pre_existing_condition"
+          }
+        ],
+        "recommendation": "cannot_proceed",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 0.8,
+        "reasoning_summary": "Rebuttal review: found 1 additional critical compliance flag(s) in other assessments. Escalating to decline.",
+        "apra_references": [],
+        "llm_used": false,
+        "timestamp": "2026-05-28T13:55:19.135371"
+      }
+    }
+  },
+  "agent_assessments": {
+    "Medical Agent": "agent_name='Medical Agent' risk_tier='refer' flags=[{'rule_id': 'MED-D-003', 'severity': 'low', 'description': 'BMI 25-30 - overweight. May attract loading if combined with other risk factors.', 'category': 'bmi'}, {'rule_id': 'MED-D-013', 'severity': 'high', 'description': 'Current smoker. Significant loading applied due to elevated mortality risk.', 'category': 'smoker_status'}, {'rule_id': 'MED-D-030', 'severity': 'critical', 'description': 'Cardiovascular disease in applicant over 50. Requires specialist assessment.', 'category': 'pre_existing_condition'}, {'rule_id': 'MED-D-032', 'severity': 'moderate', 'description': 'Type 2 diabetes. Loading depends on control (HbA1c), complications, and duration.', 'category': 'pre_existing_condition'}] recommendation='manual_underwriting' loading_range=[1.0, 1.0] additional_evidence_required=['gp_report', 'cotinine_test', 'cardiologist_report', 'stress_ecg', 'echocardiogram', 'hba1c_history'] confidence_score=1.0 reasoning_summary='Rebuttal for Medical Agent: Re-evaluating 4 flag(s) against 2 conflicting assessment(s).\\n  [STAND FIRM] MED-D-003: BMI 25-30 - overweight. May attract loading if combined with other risk factors. (severity: low) \u2014 Objective clinical evidence supports this flag.\\n  [STAND FIRM] MED-D-013: Current smoker. Significant loading applied due to elevated mortality risk. (severity: high) \u2014 Objective clinical evidence supports this flag.\\n  [STAND FIRM] MED-D-030: Cardiovascular disease in applicant over 50. Requires specialist assessment. (severity: critical) \u2014 Objective clinical evidence supports this flag.\\n  [STAND FIRM] MED-D-032: Type 2 diabetes. Loading depends on control (HbA1c), complications, and duration. (severity: moderate) \u2014 Objective clinical evidence supports this flag.\\n\\n  Standing firm on tier refer (confidence 1.00).' apra_references=['CPS 220 - Risk Assessment'] llm_used=False timestamp='2026-05-28T13:55:19.136372'",
+    "Financial Agent": "agent_name='Financial Agent' risk_tier='standard' flags=[{'rule_id': 'FIN-D-005', 'severity': 'none', 'description': 'Age 51-60: Sum insured within 15x income. Acceptable ratio for older applicants.', 'category': 'income_multiple'}] recommendation='standard' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=0.95 reasoning_summary='Matched 1 deterministic rule(s). Highest severity: none (FIN-D-005). [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed assessment from Compliance Agent (standard). Financial evidence supports our assessment (standard). Standing firm. [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed conflicting assessment from Compliance Agent (decline). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed conflicting assessment from Compliance Agent (decline). Financial data supports original tier (standard). Standing firm on financial risk assessment.' apra_references=['CPS 220 - Risk Assessment'] llm_used=False timestamp='2026-05-28T13:55:19.135371'",
+    "Compliance Agent": "agent_name='Compliance Agent' risk_tier='decline' flags=[{'rule_id': 'MED-D-030', 'severity': 'critical', 'description': 'Cardiovascular disease in applicant over 50. Requires specialist assessment.', 'category': 'pre_existing_condition'}] recommendation='cannot_proceed' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=0.8 reasoning_summary='Rebuttal review: found 1 additional critical compliance flag(s) in other assessments. Escalating to decline.' apra_references=[] llm_used=False timestamp='2026-05-28T13:55:19.135371'"
+  },
+  "debate_log": [
+    {
+      "round": 1,
+      "agent": "Medical Agent",
+      "original_tier": [
+        "refer",
+        "standard",
+        "standard"
+      ],
+      "updated_tier": "refer",
+      "reasoning": "Rebuttal for Medical Agent: Re-evaluating 4 flag(s) against 2 conflicting assessment(s).\n  [STAND FIRM] MED-D-003: BMI 25-30 - overweight. May attract loading if combined with other risk factors. (severity: low) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-013: Current smoker. Significant loading applied due to elevated mortality risk. (severity: high) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-030: Cardiovascular disease in applicant over 50. Requires specialist assessment. (severity: critical) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-032: Type 2 diabetes. Loading depends on control (HbA1c), complications, and duration. (severity: moderate) \u2014 Objective clinical evidence supports this flag.\n\n  Standing firm on tier refer (confidence 1.00)."
+    },
+    {
+      "round": 1,
+      "agent": "Financial Agent",
+      "original_tier": [
+        "refer",
+        "standard",
+        "standard"
+      ],
+      "updated_tier": "standard",
+      "reasoning": "Matched 1 deterministic rule(s). Highest severity: none (FIN-D-005). [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed assessment from Compliance Agent (standard). Financial evidence supports our assessment (standard). Standing firm."
+    },
+    {
+      "round": 1,
+      "agent": "Compliance Agent",
+      "original_tier": [
+        "refer",
+        "standard",
+        "decline"
+      ],
+      "updated_tier": "decline",
+      "reasoning": "Rebuttal review: found 1 additional critical compliance flag(s) in other assessments. Escalating to decline."
+    },
+    {
+      "round": 2,
+      "agent": "Medical Agent",
+      "original_tier": [
+        "refer",
+        "standard",
+        "decline"
+      ],
+      "updated_tier": "refer",
+      "reasoning": "Rebuttal for Medical Agent: Re-evaluating 4 flag(s) against 2 conflicting assessment(s).\n  [STAND FIRM] MED-D-003: BMI 25-30 - overweight. May attract loading if combined with other risk factors. (severity: low) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-013: Current smoker. Significant loading applied due to elevated mortality risk. (severity: high) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-030: Cardiovascular disease in applicant over 50. Requires specialist assessment. (severity: critical) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-032: Type 2 diabetes. Loading depends on control (HbA1c), complications, and duration. (severity: moderate) \u2014 Objective clinical evidence supports this flag.\n\n  Standing firm on tier refer (confidence 1.00)."
+    },
+    {
+      "round": 2,
+      "agent": "Financial Agent",
+      "original_tier": [
+        "refer",
+        "standard",
+        "decline"
+      ],
+      "updated_tier": "standard",
+      "reasoning": "Matched 1 deterministic rule(s). Highest severity: none (FIN-D-005). [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed assessment from Compliance Agent (standard). Financial evidence supports our assessment (standard). Standing firm. [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed conflicting assessment from Compliance Agent (decline). Financial data supports original tier (standard). Standing firm on financial risk assessment."
+    },
+    {
+      "round": 2,
+      "agent": "Compliance Agent",
+      "original_tier": [
+        "refer",
+        "standard",
+        "decline"
+      ],
+      "updated_tier": "decline",
+      "reasoning": "Rebuttal review: found 1 additional critical compliance flag(s) in other assessments. Escalating to decline."
+    },
+    {
+      "round": 3,
+      "agent": "Medical Agent",
+      "original_tier": [
+        "refer",
+        "standard",
+        "decline"
+      ],
+      "updated_tier": "refer",
+      "reasoning": "Rebuttal for Medical Agent: Re-evaluating 4 flag(s) against 2 conflicting assessment(s).\n  [STAND FIRM] MED-D-003: BMI 25-30 - overweight. May attract loading if combined with other risk factors. (severity: low) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-013: Current smoker. Significant loading applied due to elevated mortality risk. (severity: high) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-030: Cardiovascular disease in applicant over 50. Requires specialist assessment. (severity: critical) \u2014 Objective clinical evidence supports this flag.\n  [STAND FIRM] MED-D-032: Type 2 diabetes. Loading depends on control (HbA1c), complications, and duration. (severity: moderate) \u2014 Objective clinical evidence supports this flag.\n\n  Standing firm on tier refer (confidence 1.00)."
+    },
+    {
+      "round": 3,
+      "agent": "Financial Agent",
+      "original_tier": [
+        "refer",
+        "standard",
+        "decline"
+      ],
+      "updated_tier": "standard",
+      "reasoning": "Matched 1 deterministic rule(s). Highest severity: none (FIN-D-005). [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed assessment from Compliance Agent (standard). Financial evidence supports our assessment (standard). Standing firm. [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed conflicting assessment from Compliance Agent (decline). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed conflicting assessment from Medical Agent (refer). Financial data supports original tier (standard). Standing firm on financial risk assessment. [Rebuttal]: Reviewed conflicting assessment from Compliance Agent (decline). Financial data supports original tier (standard). Standing firm on financial risk assessment."
+    },
+    {
+      "round": 3,
+      "agent": "Compliance Agent",
+      "original_tier": [
+        "refer",
+        "standard",
+        "decline"
+      ],
+      "updated_tier": "decline",
+      "reasoning": "Rebuttal review: found 1 additional critical compliance flag(s) in other assessments. Escalating to decline."
+    }
+  ],
+  "consensus_reached": false,
+  "final_decision": "Refer to Manual Underwriting",
+  "decision_reasoning": "Final decision: Refer to Manual Underwriting. Based on assessments from 3 agents. Highest risk tier: decline."
+}

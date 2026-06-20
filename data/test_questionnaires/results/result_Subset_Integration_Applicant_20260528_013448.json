@@ -1,0 +1,58 @@
+{
+  "final_assessment": {
+    "decision": "Standard Offer",
+    "risk_tier": "standard",
+    "reasoning": "Final decision: Standard Offer. Based on assessments from 1 agents. Highest risk tier: standard.",
+    "flags": [
+      {
+        "rule_id": "MED-D-002",
+        "severity": "none",
+        "description": "BMI within healthy range. Standard terms."
+      },
+      {
+        "rule_id": "MED-D-010",
+        "severity": "none",
+        "description": "Non-smoker. Standard terms."
+      }
+    ],
+    "additional_evidence_required": [],
+    "all_assessments": {
+      "Medical Agent": {
+        "agent_name": "Medical Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "MED-D-002",
+            "severity": "none",
+            "description": "BMI within healthy range. Standard terms."
+          },
+          {
+            "rule_id": "MED-D-010",
+            "severity": "none",
+            "description": "Non-smoker. Standard terms."
+          }
+        ],
+        "recommendation": "standard",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 2 deterministic rule(s). Highest severity: none (MED-D-002).",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": false,
+        "timestamp": "2026-05-27T15:34:48.976444"
+      }
+    }
+  },
+  "agent_assessments": {
+    "Medical Agent": "agent_name='Medical Agent' risk_tier='standard' flags=[{'rule_id': 'MED-D-002', 'severity': 'none', 'description': 'BMI within healthy range. Standard terms.'}, {'rule_id': 'MED-D-010', 'severity': 'none', 'description': 'Non-smoker. Standard terms.'}] recommendation='standard' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='Matched 2 deterministic rule(s). Highest severity: none (MED-D-002).' apra_references=['CPS 220 - Risk Assessment'] llm_used=False timestamp='2026-05-27T15:34:48.976444'"
+  },
+  "debate_log": [],
+  "consensus_reached": true,
+  "final_decision": "Standard Offer",
+  "decision_reasoning": "Final decision: Standard Offer. Based on assessments from 1 agents. Highest risk tier: standard."
+}

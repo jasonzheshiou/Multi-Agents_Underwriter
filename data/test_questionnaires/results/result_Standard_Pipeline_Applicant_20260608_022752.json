@@ -1,0 +1,244 @@
+{
+  "final_assessment": {
+    "decision": "Standard Offer",
+    "risk_tier": "standard",
+    "reasoning": "Final decision: Standard Offer. Based on assessments from 3 agents. Highest risk tier: standard.",
+    "flags": [
+      {
+        "rule_id": "MED-D-002",
+        "severity": "none",
+        "description": "BMI within healthy range. Standard terms.",
+        "category": "bmi"
+      },
+      {
+        "rule_id": "MED-D-010",
+        "severity": "none",
+        "description": "Non-smoker. Standard terms.",
+        "category": "smoker_status"
+      },
+      {
+        "rule_id": "FIN-D-001",
+        "severity": "none",
+        "description": "Age 0-40: Sum insured within 25x income. Acceptable ratio for younger applicants.",
+        "category": "income_multiple"
+      },
+      {
+        "rule_id": "CMP-D-001",
+        "severity": "critical",
+        "description": "Ensure applicant has been informed of their duty to disclose all material facts relevant to the risk assessment.",
+        "category": "disclosure"
+      },
+      {
+        "rule_id": "CMP-D-002",
+        "severity": "high",
+        "description": "All underwriting decisions must be fully documented with rationale, risk factors considered, and evidence supporting the outcome.",
+        "category": "documentation"
+      },
+      {
+        "rule_id": "CMP-D-003",
+        "severity": "medium",
+        "description": "Underwriting decisions must be made within the regulatory timeframe (typically 20 business days for standard applications).",
+        "category": "process"
+      },
+      {
+        "rule_id": "CMP-D-004",
+        "severity": "high",
+        "description": "All communication with applicants must be in clear, plain language that a reasonable person can understand.",
+        "category": "communication"
+      },
+      {
+        "rule_id": "CMP-D-005",
+        "severity": "critical",
+        "description": "When mental health factors are relevant, ensure a proper assessment has been conducted by a qualified professional.",
+        "category": "assessment"
+      },
+      {
+        "rule_id": "CMP-D-006",
+        "severity": "high",
+        "description": "Ensure the underwriting decision aligns with the organisation's established risk management framework and risk appetite.",
+        "category": "risk_management"
+      },
+      {
+        "rule_id": "CMP-D-007",
+        "severity": "critical",
+        "description": "Ensure underwriting decisions are not based on prohibited grounds of discrimination including race, gender, age, disability, or religion.",
+        "category": "fairness"
+      },
+      {
+        "rule_id": "CMP-D-008",
+        "severity": "low",
+        "description": "Ensure a complaints handling process is available and communicated to the applicant.",
+        "category": "consumer_protection"
+      },
+      {
+        "rule_id": "CMP-D-009",
+        "severity": "low",
+        "description": "Ensure no conflicts of interest exist that could compromise the underwriting decision.",
+        "category": "governance"
+      },
+      {
+        "rule_id": "CMP-D-010",
+        "severity": "high",
+        "description": "Identify and appropriately respond to customers who may be vulnerable due to health, financial hardship, age, or other factors.",
+        "category": "consumer_protection"
+      },
+      {
+        "rule_id": "CMP-D-020",
+        "severity": "critical",
+        "description": "Ensure all personal and health information is collected, stored, and processed in compliance with applicable privacy laws.",
+        "category": "privacy"
+      }
+    ],
+    "additional_evidence_required": [],
+    "all_assessments": {
+      "Medical Agent": {
+        "agent_name": "Medical Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "MED-D-002",
+            "severity": "none",
+            "description": "BMI within healthy range. Standard terms.",
+            "category": "bmi"
+          },
+          {
+            "rule_id": "MED-D-010",
+            "severity": "none",
+            "description": "Non-smoker. Standard terms.",
+            "category": "smoker_status"
+          }
+        ],
+        "recommendation": "standard",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 2 deterministic rule(s). Highest severity: none (MED-D-002). LLM: No free-text medical conditions to enrich.",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": true,
+        "timestamp": "2026-06-07T16:27:39.922797"
+      },
+      "Financial Agent": {
+        "agent_name": "Financial Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "FIN-D-001",
+            "severity": "none",
+            "description": "Age 0-40: Sum insured within 25x income. Acceptable ratio for younger applicants.",
+            "category": "income_multiple"
+          }
+        ],
+        "recommendation": "standard",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 1 deterministic rule(s). Highest severity: none (FIN-D-001).",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": false,
+        "timestamp": "2026-06-07T16:27:39.922797"
+      },
+      "Compliance Agent": {
+        "agent_name": "Compliance Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "CMP-D-001",
+            "severity": "critical",
+            "description": "Ensure applicant has been informed of their duty to disclose all material facts relevant to the risk assessment.",
+            "category": "disclosure"
+          },
+          {
+            "rule_id": "CMP-D-002",
+            "severity": "high",
+            "description": "All underwriting decisions must be fully documented with rationale, risk factors considered, and evidence supporting the outcome.",
+            "category": "documentation"
+          },
+          {
+            "rule_id": "CMP-D-003",
+            "severity": "medium",
+            "description": "Underwriting decisions must be made within the regulatory timeframe (typically 20 business days for standard applications).",
+            "category": "process"
+          },
+          {
+            "rule_id": "CMP-D-004",
+            "severity": "high",
+            "description": "All communication with applicants must be in clear, plain language that a reasonable person can understand.",
+            "category": "communication"
+          },
+          {
+            "rule_id": "CMP-D-005",
+            "severity": "critical",
+            "description": "When mental health factors are relevant, ensure a proper assessment has been conducted by a qualified professional.",
+            "category": "assessment"
+          },
+          {
+            "rule_id": "CMP-D-006",
+            "severity": "high",
+            "description": "Ensure the underwriting decision aligns with the organisation's established risk management framework and risk appetite.",
+            "category": "risk_management"
+          },
+          {
+            "rule_id": "CMP-D-007",
+            "severity": "critical",
+            "description": "Ensure underwriting decisions are not based on prohibited grounds of discrimination including race, gender, age, disability, or religion.",
+            "category": "fairness"
+          },
+          {
+            "rule_id": "CMP-D-008",
+            "severity": "low",
+            "description": "Ensure a complaints handling process is available and communicated to the applicant.",
+            "category": "consumer_protection"
+          },
+          {
+            "rule_id": "CMP-D-009",
+            "severity": "low",
+            "description": "Ensure no conflicts of interest exist that could compromise the underwriting decision.",
+            "category": "governance"
+          },
+          {
+            "rule_id": "CMP-D-010",
+            "severity": "high",
+            "description": "Identify and appropriately respond to customers who may be vulnerable due to health, financial hardship, age, or other factors.",
+            "category": "consumer_protection"
+          },
+          {
+            "rule_id": "CMP-D-020",
+            "severity": "critical",
+            "description": "Ensure all personal and health information is collected, stored, and processed in compliance with applicable privacy laws.",
+            "category": "privacy"
+          }
+        ],
+        "recommendation": "cannot_proceed",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 11 deterministic rule(s). Highest severity: critical (CMP-D-001).",
+        "apra_references": [],
+        "llm_used": false,
+        "timestamp": "2026-06-07T16:27:46.392143"
+      }
+    }
+  },
+  "agent_assessments": {
+    "Medical Agent": "agent_name='Medical Agent' risk_tier='standard' flags=[{'rule_id': 'MED-D-002', 'severity': 'none', 'description': 'BMI within healthy range. Standard terms.', 'category': 'bmi'}, {'rule_id': 'MED-D-010', 'severity': 'none', 'description': 'Non-smoker. Standard terms.', 'category': 'smoker_status'}] recommendation='standard' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='Matched 2 deterministic rule(s). Highest severity: none (MED-D-002). LLM: No free-text medical conditions to enrich.' apra_references=['CPS 220 - Risk Assessment'] llm_used=True timestamp='2026-06-07T16:27:39.922797'",
+    "Financial Agent": "agent_name='Financial Agent' risk_tier='standard' flags=[{'rule_id': 'FIN-D-001', 'severity': 'none', 'description': 'Age 0-40: Sum insured within 25x income. Acceptable ratio for younger applicants.', 'category': 'income_multiple'}] recommendation='standard' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='Matched 1 deterministic rule(s). Highest severity: none (FIN-D-001).' apra_references=['CPS 220 - Risk Assessment'] llm_used=False timestamp='2026-06-07T16:27:39.922797'",
+    "Compliance Agent": "agent_name='Compliance Agent' risk_tier='standard' flags=[{'rule_id': 'CMP-D-001', 'severity': 'critical', 'description': 'Ensure applicant has been informed of their duty to disclose all material facts relevant to the risk assessment.', 'category': 'disclosure'}, {'rule_id': 'CMP-D-002', 'severity': 'high', 'description': 'All underwriting decisions must be fully documented with rationale, risk factors considered, and evidence supporting the outcome.', 'category': 'documentation'}, {'rule_id': 'CMP-D-003', 'severity': 'medium', 'description': 'Underwriting decisions must be made within the regulatory timeframe (typically 20 business days for standard applications).', 'category': 'process'}, {'rule_id': 'CMP-D-004', 'severity': 'high', 'description': 'All communication with applicants must be in clear, plain language that a reasonable person can understand.', 'category': 'communication'}, {'rule_id': 'CMP-D-005', 'severity': 'critical', 'description': 'When mental health factors are relevant, ensure a proper assessment has been conducted by a qualified professional.', 'category': 'assessment'}, {'rule_id': 'CMP-D-006', 'severity': 'high', 'description': \"Ensure the underwriting decision aligns with the organisation's established risk management framework and risk appetite.\", 'category': 'risk_management'}, {'rule_id': 'CMP-D-007', 'severity': 'critical', 'description': 'Ensure underwriting decisions are not based on prohibited grounds of discrimination including race, gender, age, disability, or religion.', 'category': 'fairness'}, {'rule_id': 'CMP-D-008', 'severity': 'low', 'description': 'Ensure a complaints handling process is available and communicated to the applicant.', 'category': 'consumer_protection'}, {'rule_id': 'CMP-D-009', 'severity': 'low', 'description': 'Ensure no conflicts of interest exist that could compromise the underwriting decision.', 'category': 'governance'}, {'rule_id': 'CMP-D-010', 'severity': 'high', 'description': 'Identify and appropriately respond to customers who may be vulnerable due to health, financial hardship, age, or other factors.', 'category': 'consumer_protection'}, {'rule_id': 'CMP-D-020', 'severity': 'critical', 'description': 'Ensure all personal and health information is collected, stored, and processed in compliance with applicable privacy laws.', 'category': 'privacy'}] recommendation='cannot_proceed' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='Matched 11 deterministic rule(s). Highest severity: critical (CMP-D-001).' apra_references=[] llm_used=False timestamp='2026-06-07T16:27:46.392143'"
+  },
+  "debate_log": [],
+  "consensus_reached": true,
+  "final_decision": "Standard Offer",
+  "decision_reasoning": "Final decision: Standard Offer. Based on assessments from 3 agents. Highest risk tier: standard."
+}

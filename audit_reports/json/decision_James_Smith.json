@@ -1,0 +1,111 @@
+{
+  "applicant": {
+    "full_name": "James Smith",
+    "date_of_birth": "1991-03-15",
+    "age": 35,
+    "gender": "Male",
+    "residency_status": "Australian Citizen",
+    "occupation": "Software Engineer",
+    "annual_income": 120000.0,
+    "bmi": 23.7,
+    "smoker_status": "Never",
+    "benefit_types": [
+      "Death",
+      "TPD"
+    ],
+    "sum_insured_death": 750000.0
+  },
+  "agent_assessments": {
+    "Medical Agent": {
+      "agent_name": "Medical Agent",
+      "risk_tier": "standard",
+      "flags": [
+        {
+          "rule_id": "MED-D-002",
+          "severity": "none",
+          "description": "BMI within healthy range. Standard terms."
+        },
+        {
+          "rule_id": "MED-D-010",
+          "severity": "none",
+          "description": "Non-smoker. Standard terms."
+        }
+      ],
+      "recommendation": "standard",
+      "loading_range": [
+        1.0,
+        1.0
+      ],
+      "additional_evidence_required": [],
+      "confidence_score": 1.0,
+      "reasoning_summary": "Matched 2 deterministic rule(s). Highest severity: none (MED-D-002).",
+      "apra_references": [
+        "CPS 220 - Risk Assessment"
+      ],
+      "llm_used": false,
+      "timestamp": "2026-05-18T21:19:41.461010"
+    },
+    "Financial Agent": {
+      "agent_name": "Financial Agent",
+      "risk_tier": "standard",
+      "flags": [
+        {
+          "rule_id": "FIN-D-001",
+          "severity": "none",
+          "description": "Age 0-40: Sum insured within 25x income. Acceptable ratio for younger applicants."
+        }
+      ],
+      "recommendation": "standard",
+      "loading_range": [
+        1.0,
+        1.0
+      ],
+      "additional_evidence_required": [],
+      "confidence_score": 1.0,
+      "reasoning_summary": "Matched 1 deterministic rule(s). Highest severity: none (FIN-D-001).",
+      "apra_references": [
+        "CPS 220 - Risk Assessment"
+      ],
+      "llm_used": false,
+      "timestamp": "2026-05-18T21:19:41.461010"
+    },
+    "Compliance Agent": {
+      "agent_name": "Compliance Agent",
+      "risk_tier": "standard",
+      "flags": [],
+      "recommendation": "No risk factors identified. Standard terms.",
+      "loading_range": [
+        1.0,
+        1.0
+      ],
+      "additional_evidence_required": [],
+      "confidence_score": 1.0,
+      "reasoning_summary": "All deterministic rules passed.",
+      "apra_references": [],
+      "llm_used": false,
+      "timestamp": "2026-05-18T21:19:41.461010"
+    }
+  },
+  "debate_log": [],
+  "final_decision": "Standard Offer",
+  "decision_reasoning": "Final decision: Standard Offer. Based on assessments from 3 agents. Highest risk tier: standard.",
+  "consensus_reached": true,
+  "flags": [
+    {
+      "rule_id": "MED-D-002",
+      "severity": "none",
+      "description": "BMI within healthy range. Standard terms."
+    },
+    {
+      "rule_id": "MED-D-010",
+      "severity": "none",
+      "description": "Non-smoker. Standard terms."
+    },
+    {
+      "rule_id": "FIN-D-001",
+      "severity": "none",
+      "description": "Age 0-40: Sum insured within 25x income. Acceptable ratio for younger applicants."
+    }
+  ],
+  "additional_evidence_required": []
+}

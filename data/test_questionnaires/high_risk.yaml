@@ -1,0 +1,68 @@
+name: High Risk Cover
+description: High-risk applicant with multiple conditions, smoking, and family history
+benefit_types:
+  - Death
+  - Trauma/CI
+agent_names:
+  - MedicalAgent
+  - FinancialAgent
+  - ComplianceAgent
+full_name: Carol Davis
+date_of_birth: '1971-11-05'
+gender: Female
+residency_status: Permanent Resident
+contact_address: 12 Ocean Drive, Perth WA 6000
+sum_insured_death: 1000000.0
+sum_insured_trauma: 500000.0
+occupation: Registered Nurse
+employer_name: Royal Perth Hospital
+years_in_occupation: 20.0
+annual_income: 85000.0
+height_cm: 160.0
+weight_kg: 75.0
+smoker_status: Current
+cigarettes_per_day: 10
+years_smoked: 20
+taking_medications: true
+medication_details: "Metformin 500mg twice daily for diabetes; Amlodipine 5mg daily for hypertension"
+has_medical_conditions: true
+medical_conditions:
+  - condition_name: Type 2 Diabetes
+    diagnosis_date: '2015-06-20'
+    treating_doctor_name: Dr Michael Torres
+    treating_doctor_contact: '0411 222 333'
+    symptoms: Fatigue, increased thirst
+    symptom_frequency: Daily
+    treatment_description: "Managed with Metformin and diet"
+  - condition_name: Hypertension
+    diagnosis_date: '2018-09-15'
+    treating_doctor_name: Dr Sarah Chen
+    treating_doctor_contact: '0400 123 456'
+    symptoms: Occasional headaches
+    symptom_frequency: Monthly
+consumes_alcohol: true
+standard_drinks_per_week: 12
+has_family_history: true
+family_history:
+  - relationship: mother
+    condition: Stroke
+    age_at_diagnosis: 50
+  - relationship: father
+    condition: Cancer (lung)
+    age_at_diagnosis: 58
+has_hazardous_pursuits: true
+hazardous_pursuits:
+  - activity: Scuba diving
+    frequency: Monthly
+    level: amateur
+recreational_drug_use: false
+alcohol_drug_treatment: false
+has_high_risk_travel: true
+high_risk_travel_details: "Planning travel to remote areas in Papua New Guinea for volunteer work"
+total_net_worth: 350000.0
+financial_obligations: Mortgage $300,000, car loan $25,000
+obligation_end_dates: "Mortgage 2040, car loan 2027"
+bankruptcy_status: None
+previous_bankruptcy: false
+criminal_convictions: false
+duty_of_disclosure_acknowledged: true

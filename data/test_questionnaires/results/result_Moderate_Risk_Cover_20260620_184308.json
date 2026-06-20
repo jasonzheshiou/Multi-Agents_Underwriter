@@ -1,0 +1,305 @@
+{
+  "final_assessment": {
+    "decision": "Offer with Loading/Exclusion",
+    "risk_tier": "loading",
+    "reasoning": "Final underwriting decision: Offer with Loading/Exclusion. Based on assessments from 2 underwriting agents. Compliance noted 12 potential process gap(s): All underwriting decisions must be documented with rationale, risk factors, and supporting evidence per APRA CPS 220., Underwriting decisions should be communicated within 20 business days for standard applications per Insurance Contracts Act., All communications with applicants must use clear, plain language that a reasonable person can understand.....",
+    "flags": [
+      {
+        "rule_id": "MED-D-003",
+        "severity": "low",
+        "description": "BMI 25-30 - overweight. May attract loading if combined with other risk factors.",
+        "category": "bmi"
+      },
+      {
+        "rule_id": "MED-D-011",
+        "severity": "low",
+        "description": "Former smoker, quit 1+ year ago. Reduced loading. After 1 year, cardiovascular risk begins to normalise.",
+        "category": "smoker_status"
+      },
+      {
+        "rule_id": "MED-D-050",
+        "severity": "moderate",
+        "description": "Family history of early-onset cardiovascular disease (parent/sibling diagnosed before age 60).",
+        "category": "family_history"
+      },
+      {
+        "rule_id": "FIN-D-003",
+        "severity": "none",
+        "description": "Age 41-50: Sum insured within 20x income. Acceptable ratio for middle-aged applicants.",
+        "category": "income_multiple"
+      }
+    ],
+    "additional_evidence_required": [
+      "resting_ecg",
+      "gp_report",
+      "blood_test_lipids"
+    ],
+    "compliance_flags": [
+      {
+        "rule_id": "CMP-D-002",
+        "severity": "low",
+        "description": "All underwriting decisions must be documented with rationale, risk factors, and supporting evidence per APRA CPS 220.",
+        "category": "documentation"
+      },
+      {
+        "rule_id": "CMP-D-003",
+        "severity": "low",
+        "description": "Underwriting decisions should be communicated within 20 business days for standard applications per Insurance Contracts Act.",
+        "category": "process"
+      },
+      {
+        "rule_id": "CMP-D-004",
+        "severity": "low",
+        "description": "All communications with applicants must use clear, plain language that a reasonable person can understand.",
+        "category": "communication"
+      },
+      {
+        "rule_id": "CMP-D-006",
+        "severity": "low",
+        "description": "APRA CPS 230 requires operational resilience for critical operations including AI-assisted underwriting. Confirm decision-making process is resilient and documented.",
+        "category": "operational_resilience"
+      },
+      {
+        "rule_id": "CMP-D-008",
+        "severity": "low",
+        "description": "APRA expects boards to maintain sufficient understanding of AI risk. AI-assisted decisions must be explainable and auditable. Private local LLM deployment inherently addresses this.",
+        "category": "ai_governance"
+      },
+      {
+        "rule_id": "CMP-D-009",
+        "severity": "low",
+        "description": "Life Insurance Code of Practice requires a complaints handling process be available and communicated to applicants.",
+        "category": "consumer_protection"
+      },
+      {
+        "rule_id": "CMP-D-010",
+        "severity": "low",
+        "description": "APRA CPS 220 requires governance structures to identify and manage conflicts of interest in underwriting decisions.",
+        "category": "governance"
+      },
+      {
+        "rule_id": "CMP-D-030",
+        "severity": "low",
+        "description": "APRA CPS 234 requires information security controls for sensitive data. Private local LLM deployment means no data leaves the organisation \u00e2\u20ac\u201d satisfying encryption-at-rest and access control requirements. Flag for audit documentation only.",
+        "category": "data_security"
+      },
+      {
+        "rule_id": "CMP-D-031",
+        "severity": "low",
+        "description": "APRA April 2026 AI Letter requires a full audit trail of AI reasoning, inputs, and outputs. This system's debate log and JSONL audit logger satisfy this requirement. Confirm audit logs are being persisted.",
+        "category": "ai_governance"
+      },
+      {
+        "rule_id": "CMP-D-032",
+        "severity": "low",
+        "description": "Australia's AI Ethics Principle 5 requires AI systems to reliably operate in accordance with their intended purpose. Confirm the deterministic rule engine provides consistent, reproducible assessments alongside any LLM enrichment.",
+        "category": "ai_ethics"
+      },
+      {
+        "rule_id": "CMP-D-033",
+        "severity": "low",
+        "description": "Australia's AI Ethics Principle 2 requires AI systems to respect human rights, diversity, and individual autonomy. Human-in-the-loop underwriting review is maintained for all decisions.",
+        "category": "ai_ethics"
+      },
+      {
+        "rule_id": "CMP-D-034",
+        "severity": "low",
+        "description": "Australia's AI Ethics Principle 7 requires that when AI significantly impacts a person, there must be an efficient process for people to challenge the use or outcomes. LICOP complaint handling and right-to-review provisions address this.",
+        "category": "ai_ethics"
+      }
+    ],
+    "compliance_gaps": [
+      "All underwriting decisions must be documented with rationale, risk factors, and supporting evidence per APRA CPS 220.",
+      "Underwriting decisions should be communicated within 20 business days for standard applications per Insurance Contracts Act.",
+      "All communications with applicants must use clear, plain language that a reasonable person can understand.",
+      "APRA CPS 230 requires operational resilience for critical operations including AI-assisted underwriting. Confirm decision-making process is resilient and documented.",
+      "APRA expects boards to maintain sufficient understanding of AI risk. AI-assisted decisions must be explainable and auditable. Private local LLM deployment inherently addresses this.",
+      "Life Insurance Code of Practice requires a complaints handling process be available and communicated to applicants.",
+      "APRA CPS 220 requires governance structures to identify and manage conflicts of interest in underwriting decisions.",
+      "APRA CPS 234 requires information security controls for sensitive data. Private local LLM deployment means no data leaves the organisation \u00e2\u20ac\u201d satisfying encryption-at-rest and access control requirements. Flag for audit documentation only.",
+      "APRA April 2026 AI Letter requires a full audit trail of AI reasoning, inputs, and outputs. This system's debate log and JSONL audit logger satisfy this requirement. Confirm audit logs are being persisted.",
+      "Australia's AI Ethics Principle 5 requires AI systems to reliably operate in accordance with their intended purpose. Confirm the deterministic rule engine provides consistent, reproducible assessments alongside any LLM enrichment.",
+      "Australia's AI Ethics Principle 2 requires AI systems to respect human rights, diversity, and individual autonomy. Human-in-the-loop underwriting review is maintained for all decisions.",
+      "Australia's AI Ethics Principle 7 requires that when AI significantly impacts a person, there must be an efficient process for people to challenge the use or outcomes. LICOP complaint handling and right-to-review provisions address this."
+    ],
+    "all_assessments": {
+      "Medical Agent": {
+        "agent_name": "Medical Agent",
+        "risk_tier": "loading",
+        "flags": [
+          {
+            "rule_id": "MED-D-003",
+            "severity": "low",
+            "description": "BMI 25-30 - overweight. May attract loading if combined with other risk factors.",
+            "category": "bmi"
+          },
+          {
+            "rule_id": "MED-D-011",
+            "severity": "low",
+            "description": "Former smoker, quit 1+ year ago. Reduced loading. After 1 year, cardiovascular risk begins to normalise.",
+            "category": "smoker_status"
+          },
+          {
+            "rule_id": "MED-D-050",
+            "severity": "moderate",
+            "description": "Family history of early-onset cardiovascular disease (parent/sibling diagnosed before age 60).",
+            "category": "family_history"
+          }
+        ],
+        "recommendation": "loading_or_additional_tests",
+        "loading_range": [
+          1.25,
+          1.5
+        ],
+        "additional_evidence_required": [
+          "gp_report",
+          "blood_test_lipids",
+          "resting_ecg"
+        ],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 3 deterministic rule(s). Highest severity: moderate (MED-D-050). LLM: \n\nBased on the provided knowledge base standards and assessment output, here is a brief LLM interpretation:\n\n**Condition vs. KB Alignment:**  \nWhile the KB explicitly references NHMRC BMI thresholds, AIHW smoking risk, and APRA CPS 220 pre-existing condition frameworks, hypertension is routinely assessed under the same Australian clinical and insurance underwriting standards. The diagnosis date (March 2022) and lack of recorded treatment (`N/A`) place this case within standard pre-existing condition evaluation parameters.\n\n**Interpretation of Assessment Output:**  \nThe matching of 3 deterministic rules and a highest severity of `moderate (MED-D-050)` suggests the system applied standard risk-stratification logic, likely factoring in: (1) established diagnosis duration (>2 years), (2) untreated/unverified management status, and (3) baseline cardiovascular risk elevation. In APRA CPS 220-aligned frameworks, untreated or recently diagnosed hypertension typically triggers moderate risk classification pending clinical verification or treatment documentation.\n\n**Practical Implication:**  \nThe moderate severity rating reflects a standard underwriting/clinical risk flag rather than an acute emergency. To align fully with NHMRC/AIHW risk mitigation standards, clinical follow-up is recommended to confirm blood pressure control status, initiate appropriate management if indicated, and update treatment records for accurate risk recalibration.",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": true,
+        "timestamp": "2026-06-20T08:40:42.857867"
+      },
+      "Financial Agent": {
+        "agent_name": "Financial Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "FIN-D-003",
+            "severity": "none",
+            "description": "Age 41-50: Sum insured within 20x income. Acceptable ratio for middle-aged applicants.",
+            "category": "income_multiple"
+          }
+        ],
+        "recommendation": "standard",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 1 deterministic rule(s). Highest severity: none (FIN-D-003). [LLM enrichment]: \n\n**Financial Risk Tier:** Standard  \n\n**Reasoning:**  \n- **Income-to-Coverage Alignment:** The $750,000 sum insured represents a 7.9x multiple of the $95,000 annual income, which falls within standard underwriting thresholds for a 44-year-old applicant.  \n- **Strong Financial Foundation:** A $450,000 net worth indicates solid asset accumulation and financial resilience, providing a comfortable buffer for premium payments and unexpected expenses.  \n- **Clean Financial History:** No bankruptcy, zero existing policies, and no prior declinations reflect low financial leverage, stable credit standing, and responsible financial management.  \n- **Occupation Note:** While `HEAVY_MANUAL` increases mortality/disability risk, it does not negatively impact financial capacity or premium affordability. Financial risk assessment focuses on ability to pay and balance sheet strength, both of which are sound.  \n\nCollectively, adequate income coverage ratio, robust net worth, and a clean financial track record support a **standard** financial risk classification.",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": true,
+        "timestamp": "2026-06-20T08:41:13.389478"
+      },
+      "Compliance Agent": {
+        "agent_name": "Compliance Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "CMP-D-002",
+            "severity": "low",
+            "description": "All underwriting decisions must be documented with rationale, risk factors, and supporting evidence per APRA CPS 220.",
+            "category": "documentation"
+          },
+          {
+            "rule_id": "CMP-D-003",
+            "severity": "low",
+            "description": "Underwriting decisions should be communicated within 20 business days for standard applications per Insurance Contracts Act.",
+            "category": "process"
+          },
+          {
+            "rule_id": "CMP-D-004",
+            "severity": "low",
+            "description": "All communications with applicants must use clear, plain language that a reasonable person can understand.",
+            "category": "communication"
+          },
+          {
+            "rule_id": "CMP-D-006",
+            "severity": "low",
+            "description": "APRA CPS 230 requires operational resilience for critical operations including AI-assisted underwriting. Confirm decision-making process is resilient and documented.",
+            "category": "operational_resilience"
+          },
+          {
+            "rule_id": "CMP-D-008",
+            "severity": "low",
+            "description": "APRA expects boards to maintain sufficient understanding of AI risk. AI-assisted decisions must be explainable and auditable. Private local LLM deployment inherently addresses this.",
+            "category": "ai_governance"
+          },
+          {
+            "rule_id": "CMP-D-009",
+            "severity": "low",
+            "description": "Life Insurance Code of Practice requires a complaints handling process be available and communicated to applicants.",
+            "category": "consumer_protection"
+          },
+          {
+            "rule_id": "CMP-D-010",
+            "severity": "low",
+            "description": "APRA CPS 220 requires governance structures to identify and manage conflicts of interest in underwriting decisions.",
+            "category": "governance"
+          },
+          {
+            "rule_id": "CMP-D-030",
+            "severity": "low",
+            "description": "APRA CPS 234 requires information security controls for sensitive data. Private local LLM deployment means no data leaves the organisation \u00e2\u20ac\u201d satisfying encryption-at-rest and access control requirements. Flag for audit documentation only.",
+            "category": "data_security"
+          },
+          {
+            "rule_id": "CMP-D-031",
+            "severity": "low",
+            "description": "APRA April 2026 AI Letter requires a full audit trail of AI reasoning, inputs, and outputs. This system's debate log and JSONL audit logger satisfy this requirement. Confirm audit logs are being persisted.",
+            "category": "ai_governance"
+          },
+          {
+            "rule_id": "CMP-D-032",
+            "severity": "low",
+            "description": "Australia's AI Ethics Principle 5 requires AI systems to reliably operate in accordance with their intended purpose. Confirm the deterministic rule engine provides consistent, reproducible assessments alongside any LLM enrichment.",
+            "category": "ai_ethics"
+          },
+          {
+            "rule_id": "CMP-D-033",
+            "severity": "low",
+            "description": "Australia's AI Ethics Principle 2 requires AI systems to respect human rights, diversity, and individual autonomy. Human-in-the-loop underwriting review is maintained for all decisions.",
+            "category": "ai_ethics"
+          },
+          {
+            "rule_id": "CMP-D-034",
+            "severity": "low",
+            "description": "Australia's AI Ethics Principle 7 requires that when AI significantly impacts a person, there must be an efficient process for people to challenge the use or outcomes. LICOP complaint handling and right-to-review provisions address this.",
+            "category": "ai_ethics"
+          }
+        ],
+        "recommendation": "standard",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [
+          "Underwriting decision rationale, risk factor analysis, and supporting evidence documentation (CMP-D-002)",
+          "Communication timeline logs confirming 20-business-day delivery for standard applications (CMP-D-003)",
+          "Plain language communication templates and applicant acknowledgment records (CMP-D-004)",
+          "Operational resilience documentation and business continuity plans for AI-assisted underwriting workflows (CMP-D-006)",
+          "Board AI risk governance records, model explainability reports, and auditability frameworks (CMP-D-008)",
+          "Formal complaints handling policy, applicant notification records, and resolution tracking logs (CMP-D-009)",
+          "Conflict of interest identification and management governance documentation (CMP-D-010)",
+          "Information security audit reports confirming encryption-at-rest and access control compliance (CMP-D-030)",
+          "Confirmation of persistent storage for debate logs and JSONL audit trails covering AI inputs, reasoning, and outputs (CMP-D-031)",
+          "Validation and testing reports demonstrating deterministic rule engine consistency and reproducibility (CMP-D-032)",
+          "Human-in-the-loop review process documentation and oversight records (CMP-D-033)",
+          "Applicant challenge/right-to-review process documentation and LICOP compliance records (CMP-D-034)"
+        ],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 12 deterministic rule(s). Highest severity: low (CMP-D-002). [LLM: Reviewed 12 compliance/regulatory flags spanning documentation, process, communication, operational resilience, AI governance, consumer protection, governance, data security, and AI ethics. All flags are rated low severity but require targeted evidence to confirm full alignment with APRA CPS 220/230/234, Insurance Contracts Act, LICOP, and Australian AI Ethics Principles. Key compliance focus areas include audit trail persistence, operational resilience documentation, board AI oversight records, and human-in-the-loop validation processes. No underwriting risk tier or medical/financial adjustments were made per scope constraints.]",
+        "apra_references": [],
+        "llm_used": true,
+        "timestamp": "2026-06-20T08:41:44.279746"
+      }
+    }
+  },
+  "agent_assessments": {
+    "Medical Agent": "agent_name='Medical Agent' risk_tier='loading' flags=[{'rule_id': 'MED-D-003', 'severity': 'low', 'description': 'BMI 25-30 - overweight. May attract loading if combined with other risk factors.', 'category': 'bmi'}, {'rule_id': 'MED-D-011', 'severity': 'low', 'description': 'Former smoker, quit 1+ year ago. Reduced loading. After 1 year, cardiovascular risk begins to normalise.', 'category': 'smoker_status'}, {'rule_id': 'MED-D-050', 'severity': 'moderate', 'description': 'Family history of early-onset cardiovascular disease (parent/sibling diagnosed before age 60).', 'category': 'family_history'}] recommendation='loading_or_additional_tests' loading_range=[1.25, 1.5] additional_evidence_required=['gp_report', 'blood_test_lipids', 'resting_ecg'] confidence_score=1.0 reasoning_summary='Matched 3 deterministic rule(s). Highest severity: moderate (MED-D-050). LLM: \\n\\nBased on the provided knowledge base standards and assessment output, here is a brief LLM interpretation:\\n\\n**Condition vs. KB Alignment:**  \\nWhile the KB explicitly references NHMRC BMI thresholds, AIHW smoking risk, and APRA CPS 220 pre-existing condition frameworks, hypertension is routinely assessed under the same Australian clinical and insurance underwriting standards. The diagnosis date (March 2022) and lack of recorded treatment (`N/A`) place this case within standard pre-existing condition evaluation parameters.\\n\\n**Interpretation of Assessment Output:**  \\nThe matching of 3 deterministic rules and a highest severity of `moderate (MED-D-050)` suggests the system applied standard risk-stratification logic, likely factoring in: (1) established diagnosis duration (>2 years), (2) untreated/unverified management status, and (3) baseline cardiovascular risk elevation. In APRA CPS 220-aligned frameworks, untreated or recently diagnosed hypertension typically triggers moderate risk classification pending clinical verification or treatment documentation.\\n\\n**Practical Implication:**  \\nThe moderate severity rating reflects a standard underwriting/clinical risk flag rather than an acute emergency. To align fully with NHMRC/AIHW risk mitigation standards, clinical follow-up is recommended to confirm blood pressure control status, initiate appropriate management if indicated, and update treatment records for accurate risk recalibration.' apra_references=['CPS 220 - Risk Assessment'] llm_used=True timestamp='2026-06-20T08:40:42.857867'",
+    "Financial Agent": "agent_name='Financial Agent' risk_tier='standard' flags=[{'rule_id': 'FIN-D-003', 'severity': 'none', 'description': 'Age 41-50: Sum insured within 20x income. Acceptable ratio for middle-aged applicants.', 'category': 'income_multiple'}] recommendation='standard' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='Matched 1 deterministic rule(s). Highest severity: none (FIN-D-003). [LLM enrichment]: \\n\\n**Financial Risk Tier:** Standard  \\n\\n**Reasoning:**  \\n- **Income-to-Coverage Alignment:** The $750,000 sum insured represents a 7.9x multiple of the $95,000 annual income, which falls within standard underwriting thresholds for a 44-year-old applicant.  \\n- **Strong Financial Foundation:** A $450,000 net worth indicates solid asset accumulation and financial resilience, providing a comfortable buffer for premium payments and unexpected expenses.  \\n- **Clean Financial History:** No bankruptcy, zero existing policies, and no prior declinations reflect low financial leverage, stable credit standing, and responsible financial management.  \\n- **Occupation Note:** While `HEAVY_MANUAL` increases mortality/disability risk, it does not negatively impact financial capacity or premium affordability. Financial risk assessment focuses on ability to pay and balance sheet strength, both of which are sound.  \\n\\nCollectively, adequate income coverage ratio, robust net worth, and a clean financial track record support a **standard** financial risk classification.' apra_references=['CPS 220 - Risk Assessment'] llm_used=True timestamp='2026-06-20T08:41:13.389478'",
+    "Compliance Agent": "agent_name='Compliance Agent' risk_tier='standard' flags=[{'rule_id': 'CMP-D-002', 'severity': 'low', 'description': 'All underwriting decisions must be documented with rationale, risk factors, and supporting evidence per APRA CPS 220.', 'category': 'documentation'}, {'rule_id': 'CMP-D-003', 'severity': 'low', 'description': 'Underwriting decisions should be communicated within 20 business days for standard applications per Insurance Contracts Act.', 'category': 'process'}, {'rule_id': 'CMP-D-004', 'severity': 'low', 'description': 'All communications with applicants must use clear, plain language that a reasonable person can understand.', 'category': 'communication'}, {'rule_id': 'CMP-D-006', 'severity': 'low', 'description': 'APRA CPS 230 requires operational resilience for critical operations including AI-assisted underwriting. Confirm decision-making process is resilient and documented.', 'category': 'operational_resilience'}, {'rule_id': 'CMP-D-008', 'severity': 'low', 'description': 'APRA expects boards to maintain sufficient understanding of AI risk. AI-assisted decisions must be explainable and auditable. Private local LLM deployment inherently addresses this.', 'category': 'ai_governance'}, {'rule_id': 'CMP-D-009', 'severity': 'low', 'description': 'Life Insurance Code of Practice requires a complaints handling process be available and communicated to applicants.', 'category': 'consumer_protection'}, {'rule_id': 'CMP-D-010', 'severity': 'low', 'description': 'APRA CPS 220 requires governance structures to identify and manage conflicts of interest in underwriting decisions.', 'category': 'governance'}, {'rule_id': 'CMP-D-030', 'severity': 'low', 'description': 'APRA CPS 234 requires information security controls for sensitive data. Private local LLM deployment means no data leaves the organisation \u00e2\u20ac\u201d satisfying encryption-at-rest and access control requirements. Flag for audit documentation only.', 'category': 'data_security'}, {'rule_id': 'CMP-D-031', 'severity': 'low', 'description': \"APRA April 2026 AI Letter requires a full audit trail of AI reasoning, inputs, and outputs. This system's debate log and JSONL audit logger satisfy this requirement. Confirm audit logs are being persisted.\", 'category': 'ai_governance'}, {'rule_id': 'CMP-D-032', 'severity': 'low', 'description': \"Australia's AI Ethics Principle 5 requires AI systems to reliably operate in accordance with their intended purpose. Confirm the deterministic rule engine provides consistent, reproducible assessments alongside any LLM enrichment.\", 'category': 'ai_ethics'}, {'rule_id': 'CMP-D-033', 'severity': 'low', 'description': \"Australia's AI Ethics Principle 2 requires AI systems to respect human rights, diversity, and individual autonomy. Human-in-the-loop underwriting review is maintained for all decisions.\", 'category': 'ai_ethics'}, {'rule_id': 'CMP-D-034', 'severity': 'low', 'description': \"Australia's AI Ethics Principle 7 requires that when AI significantly impacts a person, there must be an efficient process for people to challenge the use or outcomes. LICOP complaint handling and right-to-review provisions address this.\", 'category': 'ai_ethics'}] recommendation='standard' loading_range=[1.0, 1.0] additional_evidence_required=['Underwriting decision rationale, risk factor analysis, and supporting evidence documentation (CMP-D-002)', 'Communication timeline logs confirming 20-business-day delivery for standard applications (CMP-D-003)', 'Plain language communication templates and applicant acknowledgment records (CMP-D-004)', 'Operational resilience documentation and business continuity plans for AI-assisted underwriting workflows (CMP-D-006)', 'Board AI risk governance records, model explainability reports, and auditability frameworks (CMP-D-008)', 'Formal complaints handling policy, applicant notification records, and resolution tracking logs (CMP-D-009)', 'Conflict of interest identification and management governance documentation (CMP-D-010)', 'Information security audit reports confirming encryption-at-rest and access control compliance (CMP-D-030)', 'Confirmation of persistent storage for debate logs and JSONL audit trails covering AI inputs, reasoning, and outputs (CMP-D-031)', 'Validation and testing reports demonstrating deterministic rule engine consistency and reproducibility (CMP-D-032)', 'Human-in-the-loop review process documentation and oversight records (CMP-D-033)', 'Applicant challenge/right-to-review process documentation and LICOP compliance records (CMP-D-034)'] confidence_score=1.0 reasoning_summary='Matched 12 deterministic rule(s). Highest severity: low (CMP-D-002). [LLM: Reviewed 12 compliance/regulatory flags spanning documentation, process, communication, operational resilience, AI governance, consumer protection, governance, data security, and AI ethics. All flags are rated low severity but require targeted evidence to confirm full alignment with APRA CPS 220/230/234, Insurance Contracts Act, LICOP, and Australian AI Ethics Principles. Key compliance focus areas include audit trail persistence, operational resilience documentation, board AI oversight records, and human-in-the-loop validation processes. No underwriting risk tier or medical/financial adjustments were made per scope constraints.]' apra_references=[] llm_used=True timestamp='2026-06-20T08:41:44.279746'"
+  },
+  "debate_log": [],
+  "consensus_reached": true,
+  "final_decision": "Offer with Loading/Exclusion",
+  "decision_reasoning": "Final underwriting decision: Offer with Loading/Exclusion. Based on assessments from 2 underwriting agents. Compliance noted 12 potential process gap(s): All underwriting decisions must be documented with rationale, risk factors, and supporting evidence per APRA CPS 220., Underwriting decisions should be communicated within 20 business days for standard applications per Insurance Contracts Act., All communications with applicants must use clear, plain language that a reasonable person can understand....."
+}

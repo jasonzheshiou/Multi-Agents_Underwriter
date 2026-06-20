@@ -1,0 +1,14 @@
+{
+  "benefit_type": "death",
+  "version": "1.0.0",
+  "description": "Non-medical limits and automatic acceptance thresholds for Death Cover. Age-based. FOR EDUCATIONAL USE ONLY.",
+  "automatic_acceptance_limits": {
+    "description": "Maximum sum insured that can be automatically accepted without full medical underwriting, assuming standard health declaration is clean.",
+    "thresholds": [
+      {"age_min": 16, "age_max": 45, "max_sum_insured": 1000000, "requirements": "short_form_personal_statement"},
+      {"age_min": 46, "age_max": 55, "max_sum_insured": 500000, "requirements": "full_personal_statement"},
+      {"age_min": 56, "age_max": 60, "max_sum_insured": 250000, "requirements": "full_personal_statement_plus_bloods"},
+      {"age_min": 61, "age_max": 70, "max_sum_insured": 100000, "requirements": "full_medical_examination"}
+    ]
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "_comment": "Income Protection (IP) Medical Underwriting Rules — IP-M-XXX prefixed rules for occupation-based disability, physical/cognitive demands, pre-existing conditions, mental health, and age-based risk assessment.",
+  "metadata": {
+    "product_type": "income_protection",
+    "category": "medical",
+    "version": "1.0.0",
+    "description": "Medical underwriting rules for Income Protection insurance covering occupation-based disability criteria, physical and cognitive demands assessment, pre-existing condition impact, mental health considerations, and age-based IP risk factors.",
+    "created_at": "2026-05-19T00:00:00Z",
+    "updated_at": "2026-05-19T00:00:00Z",
+    "rules_count": 10
+  },
+  "rules": [
+    {
+      "rule_id": "IP-M-001",
+      "name": "occupation_disability_threshold",
+      "description": "Occupation-based disability criteria for income replacement — different occupations have different disability thresholds based on the likelihood of being unable to perform their specific job duties.",
+      "category": "medical",
+      "subcategory": "occupation_disability",
+      "priority": 1,
+      "enabled": true,
+      "condition": {
+        "type": "occupation_class_match",
+        "fields": ["applicant.occupation_class"],
+        "operator": "in",
+        "value": ["class_1_professional", "class_2_white_collar", "class_3_blue_collar", "class_4_heavy_manual", "class_5_extreme_manual"]
+      },
+      "action": {
+        "type": "set_medical_load",
+        "parameters": {
+          "class_1_professional": { "medical_load_factor": 0.6, "disability_threshold": "cannot_perform_own_occupation", "own_occupation_definition": true },
+          "class_2_white_collar": { "medical_load_factor": 0.7, "disability_threshold": "cannot_perform_own_occupation", "own_occupation_definition": true },
+          "class_3_blue_collar": { "medical_load_factor": 0.85, "disability_threshold": "cannot_perform_any_occupation", "own_occupation_definition": false },
+          "class_4_heavy_manual": { "medical_load_factor": 1.1, "disability_threshold": "cannot_perform_any_occupation", "own_occupation_definition": false },
+          "class_5_extreme_manual": { "medical_load_factor": 1.3, "disability_threshold": "cannot_perform_any_occupation", "own_occupation_definition": false }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Professional and white-collar occupations receive own-occupation disability definition. Blue-collar and manual occupations use any-occupation definition with increasing load factors."
+    },
+    {
+      "rule_id": "IP-M-002",
+      "name": "physical_demands_assessment",
+      "description": "Physical and cognitive demands assessment — evaluates the physical requirements of the applicant's occupation to determine disability risk, including lifting, standing, walking, and fine motor skills.",
+      "category": "medical",
+      "subcategory": "physical_demands",
+      "priority": 2,
+      "enabled": true,
+      "condition": {
+        "type": "physical_demand_level",
+        "fields": ["applicant.occupation_physical_demand"],
+        "operator": "in",
+        "value": ["sedentary", "light", "medium", "heavy", "very_heavy"]
+      },
+      "action": {
+        "type": "apply_physical_load",
+        "parameters": {
+          "sedentary": { "load_addition": 0.0, "additional_requirements": [] },
+          "light": { "load_addition": 0.05, "additional_requirements": ["standing_6hrs_plus"] },
+          "medium": { "load_addition": 0.1, "additional_requirements": ["standing_6hrs_plus", "lifting_10kg"] },
+          "heavy": { "load_addition": 0.2, "additional_requirements": ["standing_6hrs_plus", "lifting_25kg", "bending_twisting"] },
+          "very_heavy": { "load_addition": 0.35, "additional_requirements": ["standing_6hrs_plus", "lifting_50kg", "bending_twisting", "climbing"] }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Higher physical demand occupations increase IP claim likelihood. Heavy and very heavy demands require detailed occupational description and may trigger medical examination."
+    },
+    {
+      "rule_id": "IP-M-003",
+      "name": "cognitive_demands_assessment",
+      "description": "Cognitive demands assessment — evaluates the mental and cognitive requirements of the applicant's occupation including decision-making complexity, concentration demands, and stress levels.",
+      "category": "medical",
+      "subcategory": "cognitive_demands",
+      "priority": 3,
+      "enabled": true,
+      "condition": {
+        "type": "cognitive_demand_level",
+        "fields": ["applicant.occupation_cognitive_demand"],
+        "operator": "in",
+        "value": ["low", "moderate", "high", "very_high"]
+      },
+      "action": {
+        "type": "apply_cognitive_load",
+        "parameters": {
+          "low": { "load_addition": 0.0, "notes": "Minimal cognitive demand" },
+          "moderate": { "load_addition": 0.05, "notes": "Standard cognitive requirements" },
+          "high": { "load_addition": 0.1, "notes": "Requires detailed review of stress and decision-making capacity" },
+          "very_high": { "load_addition": 0.15, "notes": "Triggers mandatory medical exam and stress history review" }
+        }
+      },
+      "risk_impact": "medium",
+      "underwriting_notes": "High cognitive demand occupations may have elevated risk for stress-related claims and mental health-related disability."
+    },
+    {
+      "rule_id": "IP-M-004",
+      "name": "pre_existing_condition_impact",
+      "description": "Pre-existing condition impact on ability to work — assesses how pre-existing medical conditions affect the applicant's capacity to perform their occupation and the likelihood of disability claims.",
+      "category": "medical",
+      "subcategory": "pre_existing_condition",
+      "priority": 4,
+      "enabled": true,
+      "condition": {
+        "type": "has_pre_existing_conditions",
+        "fields": ["applicant.medical_history.pre_existing_conditions"],
+        "operator": "exists_and_not_empty"
+      },
+      "action": {
+        "type": "apply_pre_existing_load",
+        "parameters": {
+          "minor_conditions": { "load_addition": 0.05, "exclusion_period_months": 6, "notes": "Minor pre-existing conditions with full recovery" },
+          "moderate_conditions": { "load_addition": 0.15, "exclusion_period_months": 12, "notes": "Moderate conditions requiring ongoing management" },
+          "major_conditions": { "load_addition": 0.3, "exclusion_period_months": 24, "notes": "Major conditions with significant functional impact" },
+          "terminal_conditions": { "action": "decline", "notes": "Terminal diagnoses are declined for IP cover" }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Pre-existing conditions are assessed based on severity, recency, and treatment status. Conditions affecting ability to work are weighted more heavily."
+    },
+    {
+      "rule_id": "IP-M-005",
+      "name": "mental_health_considerations",
+      "description": "Mental health considerations for IP — evaluates the applicant's mental health history and its impact on ability to work, including depression, anxiety, stress-related conditions, and psychological trauma.",
+      "category": "medical",
+      "subcategory": "mental_health",
+      "priority": 5,
+      "enabled": true,
+      "condition": {
+        "type": "mental_health_history",
+        "fields": ["applicant.medical_history.mental_health"],
+        "operator": "exists_and_not_empty"
+      },
+      "action": {
+        "type": "apply_mental_health_load",
+        "parameters": {
+          "no_history": { "load_addition": 0.0, "notes": "No mental health history reported" },
+          "mild_episode": { "load_addition": 0.05, "exclusion_period_months": 6, "notes": "Mild mental health episode, fully resolved" },
+          "moderate_episode": { "load_addition": 0.12, "exclusion_period_months": 12, "notes": "Moderate mental health episode with treatment" },
+          "severe_episode": { "load_addition": 0.25, "exclusion_period_months": 24, "notes": "Severe mental health episode requiring hospitalisation or intensive treatment" },
+          "ongoing_treatment": { "load_addition": 0.2, "exclusion_period_months": 12, "notes": "Ongoing mental health treatment — requires GP report" },
+          "suicide_risk_history": { "load_addition": 0.35, "exclusion_period_months": 36, "notes": "Suicide risk history — enhanced underwriting required" }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Mental health conditions are a leading cause of IP claims. Enhanced underwriting including GP and psychiatrist reports may be required for significant history."
+    },
+    {
+      "rule_id": "IP-M-006",
+      "name": "age_based_ip_risk",
+      "description": "Age-based IP risk assessment — evaluates how the applicant's age affects their disability risk, recovery prospects, and the appropriate benefit period for their life stage.",
+      "category": "medical",
+      "subcategory": "age_risk",
+      "priority": 6,
+      "enabled": true,
+      "condition": {
+        "type": "age_bracket",
+        "fields": ["applicant.age"],
+        "operator": "range",
+        "value": {
+          "18_25": { "min": 18, "max": 25 },
+          "26_35": { "min": 26, "max": 35 },
+          "36_45": { "min": 36, "max": 45 },
+          "46_55": { "min": 46, "max": 55 },
+          "56_65": { "min": 56, "max": 65 },
+          "66_plus": { "min": 66, "max": 99 }
+        }
+      },
+      "action": {
+        "type": "apply_age_load",
+        "parameters": {
+          "18_25": { "load_addition": 0.0, "recommended_benefit_period": "2yr_or_5yr", "notes": "Younger applicants — lower disability risk but higher moral hazard" },
+          "26_35": { "load_addition": 0.05, "recommended_benefit_period": "5yr_or_to_65", "notes": "Prime earning years — moderate disability risk" },
+          "36_45": { "load_addition": 0.1, "recommended_benefit_period": "5yr_or_to_65", "notes": "Established career — higher disability risk" },
+          "46_55": { "load_addition": 0.2, "recommended_benefit_period": "to_65", "notes": "Near retirement — elevated disability risk, longer benefit needed" },
+          "56_65": { "load_addition": 0.35, "recommended_benefit_period": "to_65", "notes": "Close to retirement — high disability risk, short waiting period recommended" },
+          "66_plus": { "action": "decline", "notes": "IP cover not available for applicants aged 66 and over" }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Older applicants have higher disability risk and shorter remaining working life. Benefit period recommendations reflect appropriate coverage duration."
+    },
+    {
+      "rule_id": "IP-M-007",
+      "name": "disability_definition_classification",
+      "description": "Disability definition classification — determines whether the policy should use own-occupation, any-occupation, or groups-occupation disability definition based on occupation class and risk profile.",
+      "category": "medical",
+      "subcategory": "disability_definition",
+      "priority": 7,
+      "enabled": true,
+      "condition": {
+        "type": "combined_risk_profile",
+        "fields": ["applicant.occupation_class", "applicant.medical_load_total"],
+        "operator": "evaluate"
+      },
+      "action": {
+        "type": "set_disability_definition",
+        "parameters": {
+          "own_occupation": { "applicable_classes": ["class_1_professional", "class_2_white_collar"], "load_addition": 0.0, "notes": "Own-occupation definition for professional occupations" },
+          "groups_occupation": { "applicable_classes": ["class_3_blue_collar"], "load_addition": 0.08, "notes": "Groups-occupation definition for skilled trades" },
+          "any_occupation": { "applicable_classes": ["class_4_heavy_manual", "class_5_extreme_manual"], "load_addition": -0.05, "notes": "Any-occupation definition for manual workers — lower premium but stricter claim criteria" }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Disability definition significantly impacts claim likelihood. Own-occupation definitions pay even if the insured can work in a different occupation."
+    },
+    {
+      "rule_id": "IP-M-008",
+      "name": "residual_disability_assessment",
+      "description": "Residual disability assessment — evaluates eligibility for partial income replacement when the applicant can work but with reduced capacity due to injury or illness.",
+      "category": "medical",
+      "subcategory": "residual_disability",
+      "priority": 8,
+      "enabled": true,
+      "condition": {
+        "type": "residual_disability_eligibility",
+        "fields": ["applicant.requested_cover.residual_disability"],
+        "operator": "equals",
+        "value": true
+      },
+      "action": {
+        "type": "enable_residual_disability",
+        "parameters": {
+          "minimum_income_loss_percent": 20,
+          "maximum_residual_benefit_percent": 100,
+          "pro rata_calculation": "based_on_income_loss",
+          "notes": "Residual disability pays proportionally based on income reduction (20% minimum loss required)"
+        }
+      },
+      "risk_impact": "medium",
+      "underwriting_notes": "Residual disability benefit provides partial income replacement. Requires income verification and ongoing proof of income loss."
+    },
+    {
+      "rule_id": "IP-M-009",
+      "name": "medical_examination_trigger",
+      "description": "Medical examination trigger — determines when a paramedical examination, GP report, or specialist report is required based on cumulative medical risk factors.",
+      "category": "medical",
+      "subcategory": "medical_exam",
+      "priority": 9,
+      "enabled": true,
+      "condition": {
+        "type": "cumulative_risk_threshold",
+        "fields": ["applicant.medical_load_total", "applicant.age", "applicant.cover_amount"],
+        "operator": "evaluate"
+      },
+      "action": {
+        "type": "require_medical_investigation",
+        "parameters": {
+          "no_exam_required": { "max_medical_load": 0.2, "max_age": 45, "max_cover": 500000, "notes": "No medical exam needed for low-risk profiles" },
+          "gp_report_only": { "max_medical_load": 0.35, "max_age": 55, "max_cover": 750000, "notes": "General practitioner report required" },
+          "paramedical_exam": { "max_medical_load": 0.5, "max_age": 65, "max_cover": 1000000, "notes": "Paramedical examination including blood work and ECG" },
+          "specialist_report": { "max_medical_load": null, "max_age": null, "max_cover": null, "notes": "Specialist report based on medical history — case-by-case" }
+        }
+      },
+      "risk_impact": "medium",
+      "underwriting_notes": "Medical investigation requirements escalate with age, cover amount, and cumulative medical risk score."
+    },
+    {
+      "rule_id": "IP-M-010",
+      "name": "drug_alcohol_screening",
+      "description": "Drug and alcohol screening assessment — evaluates substance use history and its impact on IP disability risk, including dependency, misuse, and rehabilitation status.",
+      "category": "medical",
+      "subcategory": "substance_use",
+      "priority": 10,
+      "enabled": true,
+      "condition": {
+        "type": "substance_use_history",
+        "fields": ["applicant.medical_history.substance_use"],
+        "operator": "exists_and_not_empty"
+      },
+      "action": {
+        "type": "apply_substance_load",
+        "parameters": {
+          "none_reported": { "load_addition": 0.0, "notes": "No substance use reported" },
+          "social_use": { "load_addition": 0.02, "notes": "Social drug/alcohol use — standard rating" },
+          "past_dependency": { "load_addition": 0.15, "exclusion_period_months": 24, "notes": "Past dependency — requires evidence of sustained recovery" },
+          "current_dependency": { "load_addition": 0.3, "exclusion_period_months": 36, "notes": "Current dependency — enhanced underwriting and possibly declined" },
+          "illicit_drug_use": { "load_addition": 0.25, "exclusion_period_months": 24, "notes": "Illicit drug use — elevated risk rating" }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Substance use history significantly impacts IP risk. Current dependency may result in exclusion of substance-related claims or overall decline."
+    }
+  ]
+}

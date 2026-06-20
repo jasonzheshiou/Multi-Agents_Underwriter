@@ -1,0 +1,56 @@
+name: Moderate Risk Cover
+description: Moderate-risk applicant with hypertension and family history
+benefit_types:
+  - Death
+agent_names:
+  - MedicalAgent
+  - FinancialAgent
+  - ComplianceAgent
+full_name: Bob Williams
+date_of_birth: '1981-07-22'
+gender: Male
+residency_status: Australian Citizen
+contact_address: 78 River Road, Brisbane QLD 4000
+sum_insured_death: 750000.0
+occupation: Construction Manager
+employer_name: BuildRight Constructions
+years_in_occupation: 12.0
+annual_income: 95000.0
+height_cm: 178.0
+weight_kg: 85.0
+smoker_status: Former
+cigarettes_per_day: 0
+years_smoked: 15
+years_since_quit: 5
+taking_medications: true
+medication_details: "Lisinopril 10mg daily for hypertension"
+has_medical_conditions: true
+medical_conditions:
+  - condition_name: Hypertension
+    diagnosis_date: '2022-03-10'
+    treating_doctor_name: Dr Sarah Chen
+    treating_doctor_contact: '0400 123 456'
+    symptoms: Occasional headaches
+    symptom_frequency: Weekly
+consumes_alcohol: true
+standard_drinks_per_week: 10
+has_family_history: true
+family_history:
+  - relationship: father
+    condition: Heart attack
+    age_at_diagnosis: 55
+  - relationship: mother
+    condition: Type 2 diabetes
+    age_at_diagnosis: 62
+has_hazardous_pursuits: false
+hazardous_pursuits: []
+recreational_drug_use: false
+alcohol_drug_treatment: false
+has_high_risk_travel: false
+total_net_worth: 450000.0
+financial_obligations: Mortgage $450,000
+obligation_end_dates: '2038'
+bankruptcy_status: None
+previous_bankruptcy: false
+criminal_convictions: false
+duty_of_disclosure_acknowledged: true

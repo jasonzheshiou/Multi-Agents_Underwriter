@@ -1,0 +1,62 @@
+# Python artifacts
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.eggs/
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+
+# Environment
+.env
+.env.local
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.coverage
+
+# Linting
+.ruff_cache/
+.mypy_cache/
+
+# Vector store
+chroma_db/
+
+# Audit logs
+audit_logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Non-essential files (excluded from repo)
+AGENTS.md
+AI_GUIDE.md
+RELEASE_NOTES.md
+CONTRIBUTING.md
+DEVELOPMENT_RULES.md
+plan.md
+README_sample.md
+error.txt
+fix_ruff.py
+New Text Document.txt
+New Text Document (2).txt
+
+# AI dev tool internals
+.sisyphus/

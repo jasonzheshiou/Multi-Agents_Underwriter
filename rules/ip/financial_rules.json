@@ -1,0 +1,465 @@
+{
+  "_comment": "Income Protection (IP) Financial Underwriting Rules — IP-F-XXX prefixed rules for benefit period, waiting period, income replacement ratio, occupation hazard mapping, and multiple policy coordination.",
+  "metadata": {
+    "product_type": "income_protection",
+    "category": "financial",
+    "version": "1.0.0",
+    "description": "Financial underwriting rules for Income Protection insurance covering benefit period selection, waiting period configuration, income replacement ratio limits, occupation class hazard mapping, and multiple policy coordination.",
+    "created_at": "2026-05-19T00:00:00Z",
+    "updated_at": "2026-05-19T00:00:00Z",
+    "rules_count": 10
+  },
+  "rules": [
+    {
+      "rule_id": "IP-F-001",
+      "name": "benefit_period_rules",
+      "description": "Benefit period rules — determines the maximum duration for which IP benefits can be paid, including 2-year, 5-year, to-age-65, and to-age-70 options with associated risk loading.",
+      "category": "financial",
+      "subcategory": "benefit_period",
+      "priority": 1,
+      "enabled": true,
+      "condition": {
+        "type": "benefit_period_selection",
+        "fields": ["applicant.requested_cover.benefit_period"],
+        "operator": "in",
+        "value": ["2yr", "5yr", "to_age_65", "to_age_70"]
+      },
+      "action": {
+        "type": "set_benefit_period",
+        "parameters": {
+          "2yr": {
+            "duration_months": 24,
+            "premium_load_factor": 0.7,
+            "claim_payout_limit": "24_month_max",
+            "applicable_age_range": { "min": 18, "max": 63 },
+            "notes": "Short-term benefit period — lowest premium cost, limited coverage duration"
+          },
+          "5yr": {
+            "duration_months": 60,
+            "premium_load_factor": 1.0,
+            "claim_payout_limit": "60_month_max",
+            "applicable_age_range": { "min": 18, "max": 63 },
+            "notes": "Medium-term benefit period — standard option for most applicants"
+          },
+          "to_age_65": {
+            "duration_months": "variable_by_age",
+            "premium_load_factor": 1.6,
+            "claim_payout_limit": "until_age_65",
+            "applicable_age_range": { "min": 18, "max": 64 },
+            "notes": "Long-term benefit to retirement age — highest claim exposure"
+          },
+          "to_age_70": {
+            "duration_months": "variable_by_age",
+            "premium_load_factor": 1.9,
+            "claim_payout_limit": "until_age_70",
+            "applicable_age_range": { "min": 18, "max": 69 },
+            "notes": "Extended benefit period — available for select occupations, highest premium"
+          }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Longer benefit periods significantly increase claim exposure. To-age-70 is restricted to professional occupations with low physical demands."
+    },
+    {
+      "rule_id": "IP-F-002",
+      "name": "waiting_period_rules",
+      "description": "Waiting period rules — defines the minimum period between disability onset and benefit commencement, with shorter waiting periods carrying higher premium loads.",
+      "category": "financial",
+      "subcategory": "waiting_period",
+      "priority": 2,
+      "enabled": true,
+      "condition": {
+        "type": "waiting_period_selection",
+        "fields": ["applicant.requested_cover.waiting_period"],
+        "operator": "in",
+        "value": [30, 60, 90, 180]
+      },
+      "action": {
+        "type": "set_waiting_period",
+        "parameters": {
+          "30": {
+            "days": 30,
+            "premium_load_factor": 1.35,
+            "minimum_employment_before_claim_months": 6,
+            "notes": "Short waiting period — highest premium, requires 6 months employment history"
+          },
+          "60": {
+            "days": 60,
+            "premium_load_factor": 1.15,
+            "minimum_employment_before_claim_months": 3,
+            "notes": "Standard waiting period — balanced premium and coverage"
+          },
+          "90": {
+            "days": 90,
+            "premium_load_factor": 1.0,
+            "minimum_employment_before_claim_months": 3,
+            "notes": "Recommended waiting period — standard baseline rating"
+          },
+          "180": {
+            "days": 180,
+            "premium_load_factor": 0.75,
+            "minimum_employment_before_claim_months": 6,
+            "notes": "Long waiting period — lowest premium, requires substantial savings buffer"
+          }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Shorter waiting periods increase claim frequency. 30-day waiting periods may be declined for high-risk occupations. Minimum employment history verifies insurable interest."
+    },
+    {
+      "rule_id": "IP-F-003",
+      "name": "income_replacement_ratio",
+      "description": "Income replacement ratio — limits the percentage of pre-disability income that can be replaced by IP benefits, typically capped at 75% to maintain work incentive and prevent moral hazard.",
+      "category": "financial",
+      "subcategory": "income_ratio",
+      "priority": 3,
+      "enabled": true,
+      "condition": {
+        "type": "income_calculation",
+        "fields": ["applicant.annual_income", "applicant.requested_cover.monthly_benefit"],
+        "operator": "calculate_ratio"
+      },
+      "action": {
+        "type": "enforce_replacement_ratio",
+        "parameters": {
+          "income_brackets": {
+            "up_to_100k": {
+              "max_replacement_ratio": 0.75,
+              "declining_slab": true,
+              "slab_rates": [
+                { "min_income": 0, "max_income": 50000, "ratio": 0.75 },
+                { "min_income": 50001, "max_income": 75000, "ratio": 0.70 },
+                { "min_income": 75001, "max_income": 100000, "ratio": 0.65 }
+              ]
+            },
+            "100k_to_250k": {
+              "max_replacement_ratio": 0.65,
+              "declining_slab": true,
+              "slab_rates": [
+                { "min_income": 100001, "max_income": 175000, "ratio": 0.65 },
+                { "min_income": 175001, "max_income": 250000, "ratio": 0.55 }
+              ]
+            },
+            "above_250k": {
+              "max_replacement_ratio": 0.50,
+              "declining_slab": true,
+              "slab_rates": [
+                { "min_income": 250001, "max_income": 500000, "ratio": 0.50 },
+                { "min_income": 500001, "max_income": null, "ratio": 0.40 }
+              ]
+            }
+          },
+          "mandatory_verification": ["pay_slips", "tax_returns", "employer_confirmation"],
+          "notes": "Replacement ratio decreases at higher income levels to maintain work incentive"
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Income verification is mandatory. Declining slab rates at higher incomes reduce moral hazard. Approved income sources include salary, bonuses, commissions, and rental income."
+    },
+    {
+      "rule_id": "IP-F-004",
+      "name": "occupation_class_hazard_mapping",
+      "description": "Occupation class hazard mapping — maps occupation classes to standard IP hazard factors used in premium calculation and underwriting decisions.",
+      "category": "financial",
+      "subcategory": "occupation_hazard",
+      "priority": 4,
+      "enabled": true,
+      "condition": {
+        "type": "occupation_class",
+        "fields": ["applicant.occupation_class"],
+        "operator": "in",
+        "value": ["class_1_professional", "class_2_white_collar", "class_3_blue_collar", "class_4_heavy_manual", "class_5_extreme_manual"]
+      },
+      "action": {
+        "type": "apply_hazard_factor",
+        "parameters": {
+          "class_1_professional": {
+            "hazard_factor": 0.6,
+            "claim_frequency_index": 0.65,
+            "average_claim_duration_months": 18,
+            "premium_multiplier": 0.8,
+            "notes": "Low hazard — professional occupations have lowest IP claim rates"
+          },
+          "class_2_white_collar": {
+            "hazard_factor": 0.75,
+            "claim_frequency_index": 0.8,
+            "average_claim_duration_months": 20,
+            "premium_multiplier": 0.95,
+            "notes": "Moderate-low hazard — white collar occupations"
+          },
+          "class_3_blue_collar": {
+            "hazard_factor": 1.0,
+            "claim_frequency_index": 1.0,
+            "average_claim_duration_months": 24,
+            "premium_multiplier": 1.2,
+            "notes": "Moderate hazard — standard benchmark for IP pricing"
+          },
+          "class_4_heavy_manual": {
+            "hazard_factor": 1.4,
+            "claim_frequency_index": 1.35,
+            "average_claim_duration_months": 30,
+            "premium_multiplier": 1.55,
+            "notes": "High hazard — manual occupations with elevated injury risk"
+          },
+          "class_5_extreme_manual": {
+            "hazard_factor": 1.8,
+            "claim_frequency_index": 1.7,
+            "average_claim_duration_months": 36,
+            "premium_multiplier": 2.0,
+            "notes": "Very high hazard — extreme manual work, may require specialist underwriting"
+          }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Occupation class is the primary driver of IP pricing. Detailed occupational descriptions are required for borderline classifications."
+    },
+    {
+      "rule_id": "IP-F-005",
+      "name": "multiple_policy_coordination",
+      "description": "Multiple policy coordination — prevents over-insurance by coordinating benefits across all IP policies held by the applicant, ensuring total benefits do not exceed income replacement limits.",
+      "category": "financial",
+      "subcategory": "multiple_policy",
+      "priority": 5,
+      "enabled": true,
+      "condition": {
+        "type": "multiple_policy_check",
+        "fields": ["applicant.existing_cover.income_protection"],
+        "operator": "exists_and_not_empty"
+      },
+      "action": {
+        "type": "coordinate_benefits",
+        "parameters": {
+          "coordination_method": "pro_rata_reduction",
+          "max_total_monthly_benefit": "calculated_from_income",
+          "existing_policy_reduction": "apply_to_newest_policy_first",
+          "disclosure_required": true,
+          "penalty_for_non_disclosure": "claim_denial",
+          "notes": "Total IP benefits across all policies cannot exceed approved income replacement ratio. Existing policies are disclosed and benefits coordinated pro-rata."
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Applicants must disclose all existing IP policies. Non-disclosure is grounds for claim denial. Benefits are coordinated to prevent over-compensation."
+    },
+    {
+      "rule_id": "IP-F-006",
+      "name": "maximum_benefit_amount",
+      "description": "Maximum benefit amount — sets the absolute cap on monthly IP benefits regardless of income, based on regulatory limits and insurer capacity.",
+      "category": "financial",
+      "subcategory": "benefit_cap",
+      "priority": 6,
+      "enabled": true,
+      "condition": {
+        "type": "benefit_amount_check",
+        "fields": ["applicant.requested_cover.monthly_benefit"],
+        "operator": "compare_to_cap"
+      },
+      "action": {
+        "type": "enforce_benefit_cap",
+        "parameters": {
+          "standard_cap": {
+            "monthly_amount": 25000,
+            "annual_amount": 300000,
+            "notes": "Standard maximum monthly benefit"
+          },
+          "excess_benefit_process": {
+            "requires": ["specialist_underwriting", "increased_premium_load", "medical_exam"],
+            "load_addition": 0.15,
+            "max_excess_monthly": 15000,
+            "notes": "Benefits above standard cap require specialist underwriting and additional loading"
+          },
+          "hard_cap": {
+            "monthly_amount": 40000,
+            "notes": "Absolute maximum monthly benefit — no exceptions"
+          }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Benefit caps protect against moral hazard and limit insurer exposure. Excess benefits require enhanced underwriting."
+    },
+    {
+      "rule_id": "IP-F-007",
+      "name": "premium_rating_factors",
+      "description": "Premium rating factors — calculates the final premium by applying all applicable loading factors including age, occupation, gender, health, and policy configuration.",
+      "category": "financial",
+      "subcategory": "premium_rating",
+      "priority": 7,
+      "enabled": true,
+      "condition": {
+        "type": "premium_calculation",
+        "fields": ["applicant.age", "applicant.occupation_class", "applicant.gender", "applicant.medical_load_total", "applicant.requested_cover"],
+        "operator": "calculate"
+      },
+      "action": {
+        "type": "calculate_premium",
+        "parameters": {
+          "base_rate_per_1000": 1.5,
+          "age_factors": {
+            "18_25": 0.7,
+            "26_30": 0.85,
+            "31_35": 1.0,
+            "36_40": 1.15,
+            "41_50": 1.35,
+            "51_55": 1.6,
+            "56_60": 1.9,
+            "61_65": 2.3
+          },
+          "gender_factor": {
+            "male": 1.0,
+            "female": 0.85,
+            "notes": "Female discount based on lower claim frequency in IP products"
+          },
+          "smoker_factor": 1.15,
+          "hazard_factor": "from_occupation_class",
+          "medical_load_factor": "from_medical_rules",
+          "waiting_period_factor": "from_waiting_period_selection",
+          "benefit_period_factor": "from_benefit_period_selection",
+          "minimum_premium": {
+            "monthly": 25,
+            "annual": 250,
+            "notes": "Minimum premium floor regardless of risk profile"
+          }
+        }
+      },
+      "risk_impact": "high",
+      "underwriting_notes": "Premium is calculated by multiplying base rate by all applicable factors. Final premium is subject to minimum premium floor."
+    },
+    {
+      "rule_id": "IP-F-008",
+      "name": "coinsurance_requirements",
+      "description": "Co-insurance requirements — determines the applicant's required co-insurance (shared risk) percentage to maintain skin-in-the-game and reduce moral hazard.",
+      "category": "financial",
+      "subcategory": "coinsurance",
+      "priority": 8,
+      "enabled": true,
+      "condition": {
+        "type": "coinsurance_eligibility",
+        "fields": ["applicant.cover_percentage", "applicant.occupation_class"],
+        "operator": "evaluate"
+      },
+      "action": {
+        "type": "set_coinsurance",
+        "parameters": {
+          "standard_coinsurance": {
+            "required_percentage": 0.25,
+            "description": "Applicant retains 25% of income risk — standard for all IP policies",
+            "notes": "25% co-insurance is mandatory for all IP policies"
+          },
+          "reduced_coinsurance": {
+            "allowed_percentage": 0.10,
+            "conditions": {
+              "occupation_class": ["class_1_professional", "class_2_white_collar"],
+              "age_range": { "min": 25, "max": 50 },
+              "load_addition": 0.1
+            },
+            "notes": "10% co-insurance available for low-risk professional occupations aged 25-50"
+          },
+          "no_coinsurance": {
+            "allowed": false,
+            "notes": "Zero co-insurance is not permitted for IP products"
+          }
+        }
+      },
+      "risk_impact": "medium",
+      "underwriting_notes": "Co-insurance ensures the applicant has financial incentive to return to work. Standard 25% co-insurance applies to all policies."
+    },
+    {
+      "rule_id": "IP-F-009",
+      "name": "indexation_benefit_rules",
+      "description": "Indexation benefit rules — governs the inflation protection option that increases the benefit amount annually in line with CPI or a fixed percentage, subject to limits.",
+      "category": "financial",
+      "subcategory": "indexation",
+      "priority": 9,
+      "enabled": true,
+      "condition": {
+        "type": "indexation_requested",
+        "fields": ["applicant.requested_cover.indexation"],
+        "operator": "equals",
+        "value": true
+      },
+      "action": {
+        "type": "apply_indexation",
+        "parameters": {
+          "indexation_options": {
+            "cpi_linked": {
+              "max_annual_increase_percent": 5.0,
+              "average_annual_increase_percent": 3.0,
+              "premium_load_factor": 0.12,
+              "notes": "CPI-linked indexation — benefit increases with inflation up to 5% cap"
+            },
+            "fixed_percent": {
+              "max_annual_increase_percent": 5.0,
+              "options": [2.5, 3.0, 4.0, 5.0],
+              "premium_load_factor": 0.10,
+              "notes": "Fixed percentage indexation — applicant selects increase rate"
+            },
+            "no_indexation": {
+              "premium_load_factor": 0.0,
+              "notes": "No inflation protection — benefit amount remains fixed"
+            }
+          },
+          "cumulative_cap": {
+            "max_total_increase_percent": 100,
+            "notes": "Total indexed increase cannot exceed 100% of original benefit"
+          },
+          "claims_inflation_protection": {
+            "applies_during_claim": true,
+            "notes": "Indexation continues to apply to benefits during claim period"
+          }
+        }
+      },
+      "risk_impact": "medium",
+      "underwriting_notes": "Indexation increases long-term claim exposure. CPI-linked indexation provides market-aligned protection but carries higher cost."
+    },
+    {
+      "rule_id": "IP-F-010",
+      "name": "benefit_excess_deductible",
+      "description": "Benefit excess/deductible rules — allows applicants to choose a benefit excess (waiting period extension after disability onset) to reduce premiums.",
+      "category": "financial",
+      "subcategory": "benefit_excess",
+      "priority": 10,
+      "enabled": true,
+      "condition": {
+        "type": "benefit_excess_selection",
+        "fields": ["applicant.requested_cover.benefit_excess"],
+        "operator": "in",
+        "value": [0, 14, 30, 90, 180]
+      },
+      "action": {
+        "type": "set_benefit_excess",
+        "parameters": {
+          "0": {
+            "excess_days": 0,
+            "premium_discount_factor": 1.0,
+            "notes": "No benefit excess — full premium"
+          },
+          "14": {
+            "excess_days": 14,
+            "premium_discount_factor": 0.95,
+            "notes": "14-day benefit excess — 5% premium discount"
+          },
+          "30": {
+            "excess_days": 30,
+            "premium_discount_factor": 0.90,
+            "notes": "30-day benefit excess — 10% premium discount"
+          },
+          "90": {
+            "excess_days": 90,
+            "premium_discount_factor": 0.82,
+            "notes": "90-day benefit excess — 18% premium discount"
+          },
+          "180": {
+            "excess_days": 180,
+            "premium_discount_factor": 0.75,
+            "notes": "180-day benefit excess — 25% premium discount"
+          }
+        },
+        "constraints": {
+          "benefit_excess_cannot_exceed_waiting_period": true,
+          "notes": "Benefit excess is additional to the waiting period. Combined total determines time from disability to benefit payment."
+        }
+      },
+      "risk_impact": "medium",
+      "underwriting_notes": "Benefit excess reduces claim frequency by shifting short-term claims to personal savings. Cannot exceed remaining waiting period."
+    }
+  ]
+}

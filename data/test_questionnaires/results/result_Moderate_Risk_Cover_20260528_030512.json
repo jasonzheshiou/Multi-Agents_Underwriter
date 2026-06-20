@@ -1,0 +1,109 @@
+{
+  "final_assessment": {
+    "decision": "Standard Offer",
+    "risk_tier": "standard",
+    "reasoning": "Final decision: Standard Offer. Based on assessments from 3 agents. Highest risk tier: standard.",
+    "flags": [
+      {
+        "rule_id": "MED-D-003",
+        "severity": "low",
+        "description": "BMI 25-30 - overweight. May attract loading if combined with other risk factors."
+      },
+      {
+        "rule_id": "MED-D-011",
+        "severity": "low",
+        "description": "Former smoker, quit 1+ year ago. Reduced loading. After 1 year, cardiovascular risk begins to normalise."
+      },
+      {
+        "rule_id": "FIN-D-003",
+        "severity": "none",
+        "description": "Age 41-50: Sum insured within 20x income. Acceptable ratio for middle-aged applicants."
+      }
+    ],
+    "additional_evidence_required": [
+      "gp_report"
+    ],
+    "all_assessments": {
+      "Medical Agent": {
+        "agent_name": "Medical Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "MED-D-003",
+            "severity": "low",
+            "description": "BMI 25-30 - overweight. May attract loading if combined with other risk factors."
+          },
+          {
+            "rule_id": "MED-D-011",
+            "severity": "low",
+            "description": "Former smoker, quit 1+ year ago. Reduced loading. After 1 year, cardiovascular risk begins to normalise."
+          }
+        ],
+        "recommendation": "standard_or_loading",
+        "loading_range": [
+          1.0,
+          1.25
+        ],
+        "additional_evidence_required": [
+          "gp_report"
+        ],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 2 deterministic rule(s). Highest severity: low (MED-D-003).",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": false,
+        "timestamp": "2026-05-27T17:05:12.377730"
+      },
+      "Financial Agent": {
+        "agent_name": "Financial Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "FIN-D-003",
+            "severity": "none",
+            "description": "Age 41-50: Sum insured within 20x income. Acceptable ratio for middle-aged applicants."
+          }
+        ],
+        "recommendation": "standard",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 1 deterministic rule(s). Highest severity: none (FIN-D-003).",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": false,
+        "timestamp": "2026-05-27T17:05:12.377730"
+      },
+      "Compliance Agent": {
+        "agent_name": "Compliance Agent",
+        "risk_tier": "standard",
+        "flags": [],
+        "recommendation": "No risk factors identified. Standard terms.",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "All deterministic rules passed.",
+        "apra_references": [],
+        "llm_used": false,
+        "timestamp": "2026-05-27T17:05:12.378729"
+      }
+    }
+  },
+  "agent_assessments": {
+    "Medical Agent": "agent_name='Medical Agent' risk_tier='standard' flags=[{'rule_id': 'MED-D-003', 'severity': 'low', 'description': 'BMI 25-30 - overweight. May attract loading if combined with other risk factors.'}, {'rule_id': 'MED-D-011', 'severity': 'low', 'description': 'Former smoker, quit 1+ year ago. Reduced loading. After 1 year, cardiovascular risk begins to normalise.'}] recommendation='standard_or_loading' loading_range=[1.0, 1.25] additional_evidence_required=['gp_report'] confidence_score=1.0 reasoning_summary='Matched 2 deterministic rule(s). Highest severity: low (MED-D-003).' apra_references=['CPS 220 - Risk Assessment'] llm_used=False timestamp='2026-05-27T17:05:12.377730'",
+    "Financial Agent": "agent_name='Financial Agent' risk_tier='standard' flags=[{'rule_id': 'FIN-D-003', 'severity': 'none', 'description': 'Age 41-50: Sum insured within 20x income. Acceptable ratio for middle-aged applicants.'}] recommendation='standard' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='Matched 1 deterministic rule(s). Highest severity: none (FIN-D-003).' apra_references=['CPS 220 - Risk Assessment'] llm_used=False timestamp='2026-05-27T17:05:12.377730'",
+    "Compliance Agent": "agent_name='Compliance Agent' risk_tier='standard' flags=[] recommendation='No risk factors identified. Standard terms.' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='All deterministic rules passed.' apra_references=[] llm_used=False timestamp='2026-05-27T17:05:12.378729'"
+  },
+  "debate_log": [],
+  "consensus_reached": true,
+  "final_decision": "Standard Offer",
+  "decision_reasoning": "Final decision: Standard Offer. Based on assessments from 3 agents. Highest risk tier: standard."
+}

@@ -1,0 +1,117 @@
+{
+  "final_assessment": {
+    "decision": "Offer with Loading/Exclusion",
+    "risk_tier": "loading",
+    "reasoning": "Final decision: Offer with Loading/Exclusion. Based on assessments from 3 agents. Highest risk tier: loading.",
+    "flags": [
+      {
+        "rule_id": "MED-D-003",
+        "severity": "low",
+        "description": "BMI 25-30 - overweight. May attract loading if combined with other risk factors.",
+        "category": "bmi"
+      },
+      {
+        "rule_id": "MED-D-013",
+        "severity": "high",
+        "description": "Current smoker. Significant loading applied due to elevated mortality risk.",
+        "category": "smoker_status"
+      },
+      {
+        "rule_id": "FIN-D-001",
+        "severity": "none",
+        "description": "Age 0-40: Sum insured within 25x income. Acceptable ratio for younger applicants.",
+        "category": "income_multiple"
+      }
+    ],
+    "additional_evidence_required": [
+      "cotinine_test",
+      "gp_report"
+    ],
+    "all_assessments": {
+      "Medical Agent": {
+        "agent_name": "Medical Agent",
+        "risk_tier": "loading",
+        "flags": [
+          {
+            "rule_id": "MED-D-003",
+            "severity": "low",
+            "description": "BMI 25-30 - overweight. May attract loading if combined with other risk factors.",
+            "category": "bmi"
+          },
+          {
+            "rule_id": "MED-D-013",
+            "severity": "high",
+            "description": "Current smoker. Significant loading applied due to elevated mortality risk.",
+            "category": "smoker_status"
+          }
+        ],
+        "recommendation": "loading_applied",
+        "loading_range": [
+          2.0,
+          3.5
+        ],
+        "additional_evidence_required": [
+          "gp_report",
+          "cotinine_test"
+        ],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 2 deterministic rule(s). Highest severity: high (MED-D-013). LLM: No free-text medical conditions to enrich.",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": true,
+        "timestamp": "2026-06-07T08:29:37.594988"
+      },
+      "Financial Agent": {
+        "agent_name": "Financial Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "FIN-D-001",
+            "severity": "none",
+            "description": "Age 0-40: Sum insured within 25x income. Acceptable ratio for younger applicants.",
+            "category": "income_multiple"
+          }
+        ],
+        "recommendation": "standard",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 1 deterministic rule(s). Highest severity: none (FIN-D-001).",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": false,
+        "timestamp": "2026-06-07T08:29:37.595874"
+      },
+      "Compliance Agent": {
+        "agent_name": "Compliance Agent",
+        "risk_tier": "standard",
+        "flags": [],
+        "recommendation": "No risk factors identified. Standard terms.",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "All deterministic rules passed.",
+        "apra_references": [],
+        "llm_used": false,
+        "timestamp": "2026-06-07T08:29:42.759895"
+      }
+    }
+  },
+  "agent_assessments": {
+    "Medical Agent": "agent_name='Medical Agent' risk_tier='loading' flags=[{'rule_id': 'MED-D-003', 'severity': 'low', 'description': 'BMI 25-30 - overweight. May attract loading if combined with other risk factors.', 'category': 'bmi'}, {'rule_id': 'MED-D-013', 'severity': 'high', 'description': 'Current smoker. Significant loading applied due to elevated mortality risk.', 'category': 'smoker_status'}] recommendation='loading_applied' loading_range=[2.0, 3.5] additional_evidence_required=['gp_report', 'cotinine_test'] confidence_score=1.0 reasoning_summary='Matched 2 deterministic rule(s). Highest severity: high (MED-D-013). LLM: No free-text medical conditions to enrich.' apra_references=['CPS 220 - Risk Assessment'] llm_used=True timestamp='2026-06-07T08:29:37.594988'",
+    "Financial Agent": "agent_name='Financial Agent' risk_tier='standard' flags=[{'rule_id': 'FIN-D-001', 'severity': 'none', 'description': 'Age 0-40: Sum insured within 25x income. Acceptable ratio for younger applicants.', 'category': 'income_multiple'}] recommendation='standard' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='Matched 1 deterministic rule(s). Highest severity: none (FIN-D-001).' apra_references=['CPS 220 - Risk Assessment'] llm_used=False timestamp='2026-06-07T08:29:37.595874'",
+    "Compliance Agent": "agent_name='Compliance Agent' risk_tier='standard' flags=[] recommendation='No risk factors identified. Standard terms.' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='All deterministic rules passed.' apra_references=[] llm_used=False timestamp='2026-06-07T08:29:42.759895'"
+  },
+  "debate_log": [],
+  "consensus_reached": true,
+  "final_decision": "Offer with Loading/Exclusion",
+  "decision_reasoning": "Final decision: Offer with Loading/Exclusion. Based on assessments from 3 agents. Highest risk tier: loading."
+}

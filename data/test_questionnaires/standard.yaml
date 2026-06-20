@@ -1,0 +1,43 @@
+name: Standard Life Cover
+description: Low-risk applicant with no health issues
+benefit_types:
+  - Death
+  - TPD
+agent_names:
+  - MedicalAgent
+  - FinancialAgent
+  - ComplianceAgent
+full_name: Alice Johnson
+date_of_birth: '1996-03-15'
+gender: Female
+residency_status: Australian Citizen
+contact_address: 45 Park Street, Melbourne VIC 3000
+sum_insured_death: 500000.0
+sum_insured_tpd: 300000.0
+occupation: Software Engineer
+employer_name: TechCorp Pty Ltd
+years_in_occupation: 5.0
+annual_income: 100000.0
+height_cm: 165.0
+weight_kg: 60.0
+smoker_status: Never
+cigarettes_per_day: 0
+years_smoked: 0
+taking_medications: false
+has_medical_conditions: false
+medical_conditions: []
+consumes_alcohol: false
+standard_drinks_per_week: 0
+has_family_history: false
+family_history: []
+has_hazardous_pursuits: false
+hazardous_pursuits: []
+recreational_drug_use: false
+alcohol_drug_treatment: false
+has_high_risk_travel: false
+total_net_worth: 250000.0
+financial_obligations: None
+bankruptcy_status: None
+previous_bankruptcy: false
+criminal_convictions: false
+duty_of_disclosure_acknowledged: true

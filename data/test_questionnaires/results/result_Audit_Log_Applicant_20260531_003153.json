@@ -1,0 +1,111 @@
+{
+  "final_assessment": {
+    "decision": "Standard Offer",
+    "risk_tier": "standard",
+    "reasoning": "Final decision: Standard Offer. Based on assessments from 3 agents. Highest risk tier: standard.",
+    "flags": [
+      {
+        "rule_id": "MED-D-002",
+        "severity": "none",
+        "description": "BMI within healthy range. Standard terms.",
+        "category": "bmi"
+      },
+      {
+        "rule_id": "MED-D-010",
+        "severity": "none",
+        "description": "Non-smoker. Standard terms.",
+        "category": "smoker_status"
+      },
+      {
+        "rule_id": "FIN-D-001",
+        "severity": "none",
+        "description": "Age 0-40: Sum insured within 25x income. Acceptable ratio for younger applicants.",
+        "category": "income_multiple"
+      }
+    ],
+    "additional_evidence_required": [],
+    "all_assessments": {
+      "Medical Agent": {
+        "agent_name": "Medical Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "MED-D-002",
+            "severity": "none",
+            "description": "BMI within healthy range. Standard terms.",
+            "category": "bmi"
+          },
+          {
+            "rule_id": "MED-D-010",
+            "severity": "none",
+            "description": "Non-smoker. Standard terms.",
+            "category": "smoker_status"
+          }
+        ],
+        "recommendation": "standard",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 2 deterministic rule(s). Highest severity: none (MED-D-002). LLM: No free-text medical conditions to enrich.",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": true,
+        "timestamp": "2026-05-30T14:31:41.938967"
+      },
+      "Financial Agent": {
+        "agent_name": "Financial Agent",
+        "risk_tier": "standard",
+        "flags": [
+          {
+            "rule_id": "FIN-D-001",
+            "severity": "none",
+            "description": "Age 0-40: Sum insured within 25x income. Acceptable ratio for younger applicants.",
+            "category": "income_multiple"
+          }
+        ],
+        "recommendation": "standard",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "Matched 1 deterministic rule(s). Highest severity: none (FIN-D-001).",
+        "apra_references": [
+          "CPS 220 - Risk Assessment"
+        ],
+        "llm_used": false,
+        "timestamp": "2026-05-30T14:31:41.938967"
+      },
+      "Compliance Agent": {
+        "agent_name": "Compliance Agent",
+        "risk_tier": "standard",
+        "flags": [],
+        "recommendation": "No risk factors identified. Standard terms.",
+        "loading_range": [
+          1.0,
+          1.0
+        ],
+        "additional_evidence_required": [],
+        "confidence_score": 1.0,
+        "reasoning_summary": "All deterministic rules passed.",
+        "apra_references": [],
+        "llm_used": false,
+        "timestamp": "2026-05-30T14:31:47.331085"
+      }
+    }
+  },
+  "agent_assessments": {
+    "Medical Agent": "agent_name='Medical Agent' risk_tier='standard' flags=[{'rule_id': 'MED-D-002', 'severity': 'none', 'description': 'BMI within healthy range. Standard terms.', 'category': 'bmi'}, {'rule_id': 'MED-D-010', 'severity': 'none', 'description': 'Non-smoker. Standard terms.', 'category': 'smoker_status'}] recommendation='standard' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='Matched 2 deterministic rule(s). Highest severity: none (MED-D-002). LLM: No free-text medical conditions to enrich.' apra_references=['CPS 220 - Risk Assessment'] llm_used=True timestamp='2026-05-30T14:31:41.938967'",
+    "Financial Agent": "agent_name='Financial Agent' risk_tier='standard' flags=[{'rule_id': 'FIN-D-001', 'severity': 'none', 'description': 'Age 0-40: Sum insured within 25x income. Acceptable ratio for younger applicants.', 'category': 'income_multiple'}] recommendation='standard' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='Matched 1 deterministic rule(s). Highest severity: none (FIN-D-001).' apra_references=['CPS 220 - Risk Assessment'] llm_used=False timestamp='2026-05-30T14:31:41.938967'",
+    "Compliance Agent": "agent_name='Compliance Agent' risk_tier='standard' flags=[] recommendation='No risk factors identified. Standard terms.' loading_range=[1.0, 1.0] additional_evidence_required=[] confidence_score=1.0 reasoning_summary='All deterministic rules passed.' apra_references=[] llm_used=False timestamp='2026-05-30T14:31:47.331085'"
+  },
+  "debate_log": [],
+  "consensus_reached": true,
+  "final_decision": "Standard Offer",
+  "decision_reasoning": "Final decision: Standard Offer. Based on assessments from 3 agents. Highest risk tier: standard."
+}
