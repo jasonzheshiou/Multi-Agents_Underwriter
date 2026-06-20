@@ -502,6 +502,8 @@ mypy src/
 | `tests/test_integration_orchestrator.py` | Full pipeline integration |
 | `tests/rules/` | Per-rule-type tests (financial, medical, compliance, benefit limits) |
 
+See [TEST_INSTRUCTIONS.md](TEST_INSTRUCTIONS.md) for the test questionnaire YAML format and example profiles.
+
 </details>
 
 ---
