@@ -231,8 +231,8 @@ The engine works fully without an LLM (deterministic mode). To enable optional L
 llm:
   baseURL: http://localhost:1234/v1
   model: your-model-name
-  temperature: 0.1
-  max_tokens: 2000
+  temperature: xx
+  max_tokens: 200000
 ```
 
 Or set environment variables:
