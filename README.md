@@ -30,7 +30,7 @@ The purpose of this project is to demonstrate that a **full-featured Multi-Agent
 
 ## 🎬 Demo
 
-<img src="https://github.com/jasonzheshiou/Multi-Agents_Underwriter/main/Animation.gif" alt="Multi-Agents_Underwriter Demo" width="100%">
+<img src="Animation.gif" alt="Multi-Agents Underwriting Rules Engine Demo" width="100%">
 
 ---
 
@@ -347,6 +347,37 @@ Generate test applicant profiles:
 ```bash
 python data/generate_synthetic.py
 ```
+
+### Connecting Your Own API
+
+The project ships with a default API endpoint in `config.yaml` pointing to a local development server. To connect your **own OpenAI-compatible API** (cloud or local):
+
+**Option 1 — Edit `config.yaml`** (persistent):
+
+```yaml
+llm:
+  baseURL: https://your-api-endpoint.com/v1   # e.g. OpenAI, Groq, Together AI, or your own Ollama/vLLM server
+  model: your-model-name                       # e.g. gpt-4o, llama-3-70b, qwen3.6-35b-a3b
+  api_key: your-api-key-here                   # only for cloud providers; omit for local servers
+  temperature: 0.1
+  max_tokens: 2000
+```
+
+**Option 2 — Environment variables** (no file edits):
+
+```bash
+# Windows
+set LLM_BASE_URL=https://your-api-endpoint.com/v1
+set LLM_MODEL=your-model-name
+set LLM_API_KEY=your-api-key-here
+
+# macOS / Linux
+export LLM_BASE_URL=https://your-api-endpoint.com/v1
+export LLM_MODEL=your-model-name
+export LLM_API_KEY=your-api-key-here
+```
+
+> **Note**: The engine runs fully in deterministic mode without an LLM. The API is only used for optional AI enrichment of decision summaries and debate commentary. If no API is configured, the engine still produces complete underwriting assessments via the deterministic rule engine.
 
 </details>
 
