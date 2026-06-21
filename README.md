@@ -359,8 +359,8 @@ llm:
   baseURL: https://your-api-endpoint.com/v1   # e.g. OpenAI, Groq, Together AI, or your own Ollama/vLLM server
   model: your-model-name                       # e.g. gpt-4o, llama-3-70b, qwen3.6-35b-a3b
   api_key: your-api-key-here                   # only for cloud providers; omit for local servers
-  temperature: 0.1
-  max_tokens: 2000
+  temperature: xx
+  max_tokens: 200000
 ```
 
 **Option 2 — Environment variables** (no file edits):
@@ -398,7 +398,7 @@ llm:
   context_window: 200000
   wait_time: 3600
   temperature: 0.1
-  max_tokens: 2000
+  max_tokens: 200000
 
 paths:
   chroma_persist_dir: ./src/underwriting/knowledge/chroma_db
